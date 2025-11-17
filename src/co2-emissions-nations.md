@@ -41,6 +41,13 @@ toc: false
 
 body {
   overflow-anchor: none !important;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+#observablehq-main {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .card, .card > *, .card svg, .card figure {
@@ -50,16 +57,38 @@ body {
 
 .card, .grid {
   max-width: 100% !important;
+  overflow-x: hidden;
+}
+
+svg, figure {
+  max-width: 100% !important;
+  height: auto;
+}
+
+figure {
+  margin: 0;
+  overflow: hidden;
 }
 
 .chart-container {
   overflow-anchor: none !important;
   contain: layout style paint;
   min-height: 340px;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.chart-container svg,
+.chart-container figure,
+.chart-container > div {
+  max-width: 100% !important;
+  overflow-x: hidden;
 }
 
 .chart-grid {
   overflow-anchor: none !important;
+  overflow-x: hidden;
 }
 
 svg, svg * {
@@ -73,6 +102,8 @@ svg, svg * {
   margin: 0 0 4rem 0;
   overflow-anchor: none !important;
   min-height: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .sidebar {
@@ -81,6 +112,8 @@ svg, svg * {
   gap: 0.5rem;
   padding-right: 0.5rem;
   border-right: 1px solid var(--theme-foreground-faint);
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .stat-card {
@@ -91,6 +124,8 @@ svg, svg * {
   text-align: left;
   overflow-anchor: none !important;
   min-height: 60px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .stat-value {
@@ -127,6 +162,8 @@ svg, svg * {
   border: 1px solid var(--theme-foreground-faint);
   border-radius: 6px;
   overflow: visible;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .chart-grid {
@@ -136,6 +173,8 @@ svg, svg * {
   gap: 0;
   overflow-anchor: none !important;
   contain: layout;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .chart-grid .chart-container {
@@ -175,6 +214,7 @@ svg, svg * {
 
   .controls-section {
     width: 100%;
+    max-width: 100%;
   }
 
   .stat-card {
@@ -202,6 +242,10 @@ svg, svg * {
     bottom: 0;
   }
 
+  .chart-grid .chart-container:nth-child(3)::after {
+    display: none;
+  }
+
   .chart-container {
     min-height: 280px;
   }
@@ -212,6 +256,7 @@ svg, svg * {
 
   .stat-card {
     min-width: auto;
+    width: 100%;
   }
 
   .dashboard-layout {
@@ -220,6 +265,56 @@ svg, svg * {
 
   .main-content {
     max-height: none;
+  }
+
+  .hero h1 {
+    font-size: 1.1rem;
+  }
+
+  .hero p {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-card {
+    min-height: 50px;
+  }
+
+  .stat-value {
+    font-size: 1.1rem;
+  }
+
+  .stat-label {
+    font-size: 0.55rem;
+  }
+
+  .stat-change {
+    font-size: 0.55rem;
+  }
+
+  .chart-container h3 {
+    font-size: 0.7rem;
+  }
+
+  .insights-section {
+    font-size: 0.65rem;
+  }
+
+  .insights-section h3 {
+    font-size: 0.65rem;
+  }
+
+  .insights-section li {
+    font-size: 0.62rem;
+  }
+
+  .hero h1 {
+    font-size: 1rem;
+  }
+
+  .hero p {
+    font-size: 0.6rem;
   }
 }
 
@@ -247,6 +342,8 @@ svg, svg * {
   border: 2px solid var(--theme-foreground-faint);
   border-radius: 4px;
   padding: 0.5rem;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .controls-section h3 {
@@ -258,6 +355,23 @@ svg, svg * {
   letter-spacing: 0.03em;
 }
 
+.controls-section form {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.controls-section form input[type="range"] {
+  width: 100% !important;
+  max-width: 100%;
+}
+
+.controls-section form button {
+  width: 100% !important;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 .insights-section {
   background: var(--theme-background-alt);
   border: 2px solid var(--theme-foreground-faint);
@@ -265,6 +379,8 @@ svg, svg * {
   padding: 0.6rem;
   font-size: 0.7rem;
   line-height: 1.35;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .insights-section h3 {
@@ -394,52 +510,60 @@ const selectedDashboardYear = view(Scrubber(dashboardYears, {
   </div>
 
 ```js
-const yearData = emissionsData
-  .filter(d => d.year === selectedDashboardYear && d.total > 0)
-  .sort((a, b) => b.total - a.total)
-  .slice(0, 20);
+const cumulativeData = d3.rollups(
+  emissionsData.filter(d => d.year <= selectedDashboardYear),
+  v => d3.sum(v, d => d.total),
+  d => d.country
+)
+  .map(([country, cumulative]) => ({
+    country,
+    total: cumulative
+  }))
+  .sort((a, b) => b.total - a.total);
 
-const yearGlobalTotal = d3.sum(yearData, d => d.total);
-const yearTopEmitter = yearData[0];
-const yearCountriesCount = yearData.length;
-const yearTop5Total = d3.sum(yearData.slice(0, 5), d => d.total);
+const yearData = cumulativeData.slice(0, 20);
+
+const yearGlobalTotal = d3.sum(cumulativeData, d => d.total);
+const yearTopEmitter = cumulativeData[0];
+const yearCountriesCount = cumulativeData.length;
+const yearTop5Total = d3.sum(cumulativeData.slice(0, 5), d => d.total);
 const yearTop5Percentage = ((yearTop5Total / yearGlobalTotal) * 100).toFixed(0);
 const yearAvgPerCountry = (yearGlobalTotal / yearCountriesCount).toFixed(1);
 ```
   <div class="stat-card">
-    <div class="stat-label">Global Total</div>
+    <div class="stat-label">Cumulative Total</div>
     <div class="stat-value">${(yearGlobalTotal / 1000).toFixed(1)}B</div>
-    <div class="stat-change">Tons (${selectedDashboardYear})</div>
+    <div class="stat-change">MT (1751-${selectedDashboardYear})</div>
   </div>
   <div class="stat-card">
     <div class="stat-label">Top Emitter</div>
     <div class="stat-value">${yearTopEmitter?.country || 'N/A'}</div>
-    <div class="stat-change">${yearTopEmitter ? (yearTopEmitter.total / 1000).toFixed(1) + 'B tons' : 'N/A'}</div>
+    <div class="stat-change">${yearTopEmitter ? (yearTopEmitter.total / 1000).toFixed(1) + 'B MT cumulative' : 'N/A'}</div>
   </div>
   <div class="stat-card">
     <div class="stat-label">Countries</div>
     <div class="stat-value">${yearCountriesCount}</div>
-    <div class="stat-change">Reporting</div>
+    <div class="stat-change">Reported by ${selectedDashboardYear}</div>
   </div>
   <div class="stat-card">
     <div class="stat-label">Top 5 Share</div>
     <div class="stat-value">${yearTop5Percentage}%</div>
-    <div class="stat-change">Of Global Total</div>
+    <div class="stat-change">Of cumulative total</div>
   </div>
   <div class="stat-card">
     <div class="stat-label">Average/Country</div>
     <div class="stat-value">${yearAvgPerCountry}</div>
-    <div class="stat-change">Million Tons</div>
+    <div class="stat-change">Million tons cumulative</div>
   </div>
   <div class="insights-section">
     <h3>Key Insights</h3>
     <ul>
       <li><strong>Dataset:</strong> 270 years of global CO₂ emissions data (1751-2020)</li>
       <li><strong>Coverage:</strong> Tracks emissions from fossil fuels, cement production, and gas flaring</li>
-      <li><strong>Top Sources:</strong> Solid fuel (coal), liquid fuel (oil), and natural gas dominate</li>
-      <li><strong>Historical Shift:</strong> UK led in 1800s, USA in 1900s, China in 2000s</li>
-      <li><strong>Interactive:</strong> Use timeline to explore how emissions evolved globally</li>
-      <li><strong>Concentration:</strong> Top 5 countries consistently account for majority of emissions</li>
+      <li><strong>Cumulative View:</strong> All visualizations show cumulative emissions from 1751 to selected year</li>
+      <li><strong>Historical Shift:</strong> UK led early industrialization, USA dominated 1900s cumulative totals</li>
+      <li><strong>Interactive:</strong> Use timeline to explore how cumulative emissions grew over time</li>
+      <li><strong>Concentration:</strong> Top 5 countries account for majority of all historical emissions</li>
     </ul>
     <div class="data-sources">
       <strong>Data:</strong> <a href="https://datahub.io/core/co2-fossil-by-nation" target="_blank" rel="noopener noreferrer">CDIAC, 1751-2020</a>
