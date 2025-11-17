@@ -394,52 +394,60 @@ const selectedDashboardYear = view(Scrubber(dashboardYears, {
   </div>
 
 ```js
-const yearData = emissionsData
-  .filter(d => d.year === selectedDashboardYear && d.total > 0)
-  .sort((a, b) => b.total - a.total)
-  .slice(0, 20);
+const cumulativeData = d3.rollups(
+  emissionsData.filter(d => d.year <= selectedDashboardYear),
+  v => d3.sum(v, d => d.total),
+  d => d.country
+)
+  .map(([country, cumulative]) => ({
+    country,
+    total: cumulative
+  }))
+  .sort((a, b) => b.total - a.total);
 
-const yearGlobalTotal = d3.sum(yearData, d => d.total);
-const yearTopEmitter = yearData[0];
-const yearCountriesCount = yearData.length;
-const yearTop5Total = d3.sum(yearData.slice(0, 5), d => d.total);
+const yearData = cumulativeData.slice(0, 20);
+
+const yearGlobalTotal = d3.sum(cumulativeData, d => d.total);
+const yearTopEmitter = cumulativeData[0];
+const yearCountriesCount = cumulativeData.length;
+const yearTop5Total = d3.sum(cumulativeData.slice(0, 5), d => d.total);
 const yearTop5Percentage = ((yearTop5Total / yearGlobalTotal) * 100).toFixed(0);
 const yearAvgPerCountry = (yearGlobalTotal / yearCountriesCount).toFixed(1);
 ```
   <div class="stat-card">
-    <div class="stat-label">Global Total</div>
+    <div class="stat-label">Cumulative Total</div>
     <div class="stat-value">${(yearGlobalTotal / 1000).toFixed(1)}B</div>
-    <div class="stat-change">Tons (${selectedDashboardYear})</div>
+    <div class="stat-change">MT (1751-${selectedDashboardYear})</div>
   </div>
   <div class="stat-card">
     <div class="stat-label">Top Emitter</div>
     <div class="stat-value">${yearTopEmitter?.country || 'N/A'}</div>
-    <div class="stat-change">${yearTopEmitter ? (yearTopEmitter.total / 1000).toFixed(1) + 'B tons' : 'N/A'}</div>
+    <div class="stat-change">${yearTopEmitter ? (yearTopEmitter.total / 1000).toFixed(1) + 'B MT cumulative' : 'N/A'}</div>
   </div>
   <div class="stat-card">
     <div class="stat-label">Countries</div>
     <div class="stat-value">${yearCountriesCount}</div>
-    <div class="stat-change">Reporting</div>
+    <div class="stat-change">Reported by ${selectedDashboardYear}</div>
   </div>
   <div class="stat-card">
     <div class="stat-label">Top 5 Share</div>
     <div class="stat-value">${yearTop5Percentage}%</div>
-    <div class="stat-change">Of Global Total</div>
+    <div class="stat-change">Of cumulative total</div>
   </div>
   <div class="stat-card">
     <div class="stat-label">Average/Country</div>
     <div class="stat-value">${yearAvgPerCountry}</div>
-    <div class="stat-change">Million Tons</div>
+    <div class="stat-change">Million tons cumulative</div>
   </div>
   <div class="insights-section">
     <h3>Key Insights</h3>
     <ul>
       <li><strong>Dataset:</strong> 270 years of global CO₂ emissions data (1751-2020)</li>
       <li><strong>Coverage:</strong> Tracks emissions from fossil fuels, cement production, and gas flaring</li>
-      <li><strong>Top Sources:</strong> Solid fuel (coal), liquid fuel (oil), and natural gas dominate</li>
-      <li><strong>Historical Shift:</strong> UK led in 1800s, USA in 1900s, China in 2000s</li>
-      <li><strong>Interactive:</strong> Use timeline to explore how emissions evolved globally</li>
-      <li><strong>Concentration:</strong> Top 5 countries consistently account for majority of emissions</li>
+      <li><strong>Cumulative View:</strong> All visualizations show cumulative emissions from 1751 to selected year</li>
+      <li><strong>Historical Shift:</strong> UK led early industrialization, USA dominated 1900s cumulative totals</li>
+      <li><strong>Interactive:</strong> Use timeline to explore how cumulative emissions grew over time</li>
+      <li><strong>Concentration:</strong> Top 5 countries account for majority of all historical emissions</li>
     </ul>
     <div class="data-sources">
       <strong>Data:</strong> <a href="https://datahub.io/core/co2-fossil-by-nation" target="_blank" rel="noopener noreferrer">CDIAC, 1751-2020</a>
