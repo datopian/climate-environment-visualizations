@@ -184,9 +184,21 @@ svg, svg * {
 }
 
 @media (max-width: 768px) {
+  body, html {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  #observablehq-main {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
   .chart-grid {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   .chart-grid .chart-container:nth-child(1) {
@@ -204,22 +216,60 @@ svg, svg * {
 
   .chart-container {
     min-height: 280px;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+
+  .chart-container svg,
+  .chart-container figure,
+  .chart-container > div {
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   .sidebar {
     flex-direction: column;
+    max-width: 100%;
   }
 
   .stat-card {
     min-width: auto;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .controls-section {
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .controls-section form {
+    max-width: 100%;
+  }
+
+  .controls-section form button {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .controls-section form input[type="range"] {
+    max-width: 100%;
+    width: 100%;
   }
 
   .dashboard-layout {
     max-height: none;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   .main-content {
     max-height: none;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
   }
 }
 
