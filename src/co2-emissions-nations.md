@@ -450,8 +450,6 @@ const yearAvgPerCountry = (yearGlobalTotal / yearCountriesCount).toFixed(1);
   <div class="main-content">
 
 ```js
-const topCountries = yearData.slice(0, 12);
-
 function shortenCountryName(name) {
   const abbreviations = {
     "UNITED STATES OF AMERICA": "USA",
@@ -476,7 +474,27 @@ function shortenCountryName(name) {
 
 function emissionsBreakdown({width} = {}) {
   const isMobile = width < 640;
-  const breakdownData = topCountries.flatMap(d => [
+
+  const cumulativeByCountry = d3.rollups(
+    emissionsData.filter(d => d.year <= selectedDashboardYear),
+    v => ({
+      solidFuel: d3.sum(v, d => d.solidFuel),
+      liquidFuel: d3.sum(v, d => d.liquidFuel),
+      gasFuel: d3.sum(v, d => d.gasFuel),
+      cement: d3.sum(v, d => d.cement),
+      gasFlaring: d3.sum(v, d => d.gasFlaring),
+      total: d3.sum(v, d => d.total)
+    }),
+    d => d.country
+  )
+    .map(([country, sources]) => ({
+      country,
+      ...sources
+    }))
+    .sort((a, b) => b.total - a.total)
+    .slice(0, 12);
+
+  const breakdownData = cumulativeByCountry.flatMap(d => [
     { country: shortenCountryName(d.country), fullName: d.country, type: "Solid Fuel", value: d.solidFuel },
     { country: shortenCountryName(d.country), fullName: d.country, type: "Liquid Fuel", value: d.liquidFuel },
     { country: shortenCountryName(d.country), fullName: d.country, type: "Gas Fuel", value: d.gasFuel },
@@ -513,7 +531,7 @@ function emissionsBreakdown({width} = {}) {
         y: "country",
         fill: "type",
         tip: true,
-        title: d => `${d.fullName} - ${d.type}\n${d.value.toLocaleString()} million metric tons`,
+        title: d => `${d.fullName} - ${d.type}\nCumulative (1751-${selectedDashboardYear}): ${d.value.toLocaleString()} MT`,
         sort: { y: "x", reverse: true }
       }),
       Plot.ruleX([0])
@@ -767,7 +785,7 @@ function historicalTrends({width} = {}) {
 
 <div class="chart-grid">
   <div class="chart-container">
-    <h3>Emissions Breakdown by Source</h3>
+    <h3>Cumulative Emissions by Source (1751-${selectedDashboardYear})</h3>
     ${resize((width) => emissionsBreakdown({width}))}
   </div>
 
