@@ -527,13 +527,23 @@ function emissionsTreemap({width} = {}) {
   const isMobile = width < 640;
   const height = isMobile ? 280 : 320;
 
-  const topCountriesTreemap = yearData.slice(0, 30);
+  const cumulativeToYear = d3.rollups(
+    emissionsData.filter(d => d.year <= selectedDashboardYear),
+    v => d3.sum(v, d => d.total),
+    d => d.country
+  )
+    .map(([country, cumulative]) => ({
+      country,
+      cumulative
+    }))
+    .sort((a, b) => b.cumulative - a.cumulative)
+    .slice(0, 30);
+
   const hierarchyData = {
     name: "Global",
-    children: topCountriesTreemap.map(d => ({
+    children: cumulativeToYear.map(d => ({
       name: d.country,
-      value: d.total,
-      perCapita: d.perCapita
+      value: d.cumulative
     }))
   };
 
@@ -548,7 +558,7 @@ function emissionsTreemap({width} = {}) {
     .round(true)(root);
 
   const colorScale = d3.scaleSequential(d3.interpolateRdYlGn)
-    .domain([d3.max(topCountriesTreemap, d => d.total), 0]);
+    .domain([d3.max(cumulativeToYear, d => d.cumulative), 0]);
 
   const container = d3.create("div")
     .style("position", "relative");
@@ -596,7 +606,7 @@ function emissionsTreemap({width} = {}) {
         .attr("stroke-width", 4);
 
       tooltip
-        .html(`<strong>${d.data.name}</strong><br/>Total: ${d.data.value.toLocaleString()} MT<br/>Per Capita: ${d.data.perCapita > 0 ? d.data.perCapita.toFixed(2) + ' tons' : 'N/A'}`)
+        .html(`<strong>${d.data.name}</strong><br/>Cumulative (1751-${selectedDashboardYear}):<br/>${d.data.value.toLocaleString()} MT`)
         .style("visibility", "visible");
     })
     .on("mousemove", function(event) {
@@ -767,7 +777,7 @@ function historicalTrends({width} = {}) {
   </div>
 
   <div class="chart-container">
-    <h3>Global Emissions Treemap</h3>
+    <h3>Cumulative Emissions (1751-${selectedDashboardYear})</h3>
     ${resize((width) => emissionsTreemap({width}))}
   </div>
 </div>
