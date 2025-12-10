@@ -436,12 +436,12 @@ const recentRate = recentYears.length > 10 ? (recentYears[recentYears.length - 1
   <div class="insights-section">
     <h3>Key Insights</h3>
     <ul>
-      <li><strong>Historic Record:</strong> 67+ years of continuous atmospheric CO₂ measurements</li>
+      <li><strong>Safe Limit (350 PPM):</strong> Exceeded ~1990, we are now in the climate danger zone</li>
+      <li><strong>Point of No Return (450 PPM):</strong> Approaching in ~10-15 years at current rate, triggers irreversible tipping points</li>
+      <li><strong>Pre-industrial:</strong> CO₂ was ~280 PPM for 10,000+ years before industrialization</li>
+      <li><strong>Current Level:</strong> Now above ${latestReading.average.toFixed(0)} PPM - causing record heat and extreme weather</li>
       <li><strong>Acceleration:</strong> Rate of increase has nearly doubled from 1960s to today</li>
-      <li><strong>Seasonal Cycle:</strong> 6-8 PPM annual variation from Northern Hemisphere vegetation</li>
-      <li><strong>Pre-industrial:</strong> CO₂ was ~280 PPM for thousands of years before 1800</li>
-      <li><strong>Milestone:</strong> Crossed 400 PPM threshold in 2013, now above ${latestReading.average.toFixed(0)} PPM</li>
-      <li><strong>Location:</strong> Mauna Loa Observatory at 3,397m elevation in Hawaii</li>
+      <li><strong>Indoor Risk:</strong> At 1,000+ PPM cognitive function declines - rising outdoor levels make indoor air harder to keep fresh</li>
     </ul>
     <div class="data-sources">
       <strong>Data:</strong> <a href="https://datahub.io/core/co2-ppm" target="_blank" rel="noopener noreferrer">Scripps Institution of Oceanography</a>, NOAA Earth System Research Laboratory
@@ -764,67 +764,144 @@ function rateOfIncreaseChart({width} = {}) {
 ```
 
 ```js
-const monthlyPattern = d3.rollups(
-  co2Data,
-  v => ({
-    avg: d3.mean(v, d => d.average),
-    min: d3.min(v, d => d.average),
-    max: d3.max(v, d => d.average)
-  }),
-  d => d.month
-).map(([month, values]) => ({
-  month,
-  monthName: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][month - 1],
-  ...values
-})).sort((a, b) => a.month - b.month);
+const thresholds = [
+  { level: 280, label: "Pre-industrial", status: "passed", color: "#22c55e", description: "Natural baseline for 10,000+ years" },
+  { level: 350, label: "Safe Climate Limit", status: "passed", color: "#f59e0b", description: "Exceeded ~1990, entering danger zone" },
+  { level: yearAvg, label: "Current Level", status: "current", color: "#dc2626", description: `${selectedDashboardYear} measurement` },
+  { level: 450, label: "Point of No Return", status: "approaching", color: "#7f1d1d", description: "2°C warming, irreversible tipping points" }
+];
+
+const yearsTo450 = recentRate > 0 ? Math.ceil((450 - yearAvg) / recentRate) : null;
+const projectedYear450 = yearsTo450 ? selectedDashboardYear + yearsTo450 : null;
 ```
 
 ```js
-function seasonalPattern({width} = {}) {
+function thresholdsChart({width} = {}) {
   const isMobile = width < 640;
-  const deviations = monthlyPattern.map(d => d.avg - d3.mean(monthlyPattern, x => x.avg));
-  const minDev = d3.min(deviations);
-  const maxDev = d3.max(deviations);
-  const padding = (maxDev - minDev) * 0.15;
+  const height = isMobile ? 280 : 260;
+  const marginTop = 25;
+  const marginRight = isMobile ? 15 : 20;
+  const marginBottom = isMobile ? 40 : 35;
+  const marginLeft = isMobile ? 45 : 55;
 
-  return Plot.plot({
-    width,
-    height: isMobile ? 280 : 260,
-    marginLeft: isMobile ? 40 : 50,
-    marginRight: isMobile ? 20 : 30,
-    marginTop: isMobile ? 25 : 20,
-    marginBottom: isMobile ? 60 : 55,
-    style: {
-      fontSize: isMobile ? "11px" : "13px"
-    },
-    x: {
-      label: null,
-      tickRotate: isMobile ? -45 : 0
-    },
-    y: {
-      label: "Relative CO₂ (PPM)",
-      grid: true,
-      domain: [minDev - padding, maxDev + padding]
-    },
-    marks: [
-      Plot.line(monthlyPattern, {
-        x: "monthName",
-        y: d => d.avg - d3.mean(monthlyPattern, x => x.avg),
-        stroke: "#059669",
-        strokeWidth: 2.5,
-        curve: "catmull-rom"
-      }),
-      Plot.dot(monthlyPattern, {
-        x: "monthName",
-        y: d => d.avg - d3.mean(monthlyPattern, x => x.avg),
-        fill: "#059669",
-        r: 4,
-        tip: true,
-        title: d => `${d.monthName}\nDeviation: ${(d.avg - d3.mean(monthlyPattern, x => x.avg)).toFixed(2)} PPM`
-      }),
-      Plot.ruleY([0], {stroke: "#94a3b8", strokeDasharray: "2,2"})
-    ]
+  const container = d3.create("div")
+    .style("position", "relative");
+
+  const svg = container.append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("viewBox", [0, 0, width, height])
+    .style("background", "white")
+    .style("display", "block");
+
+  const yScale = d3.scaleLinear()
+    .domain([250, 480])
+    .range([height - marginBottom, marginTop]);
+
+  const barWidth = Math.min(width * 0.35, 120);
+  const barX = marginLeft + 20;
+
+  svg.append("g")
+    .attr("transform", `translate(${marginLeft},0)`)
+    .call(d3.axisLeft(yScale).ticks(6).tickSize(0).tickPadding(6))
+    .call(g => g.select(".domain").remove())
+    .call(g => g.selectAll("text").attr("font-size", isMobile ? "10px" : "11px"));
+
+  svg.append("text")
+    .attr("x", marginLeft - 8)
+    .attr("y", marginTop - 10)
+    .attr("fill", "currentColor")
+    .attr("font-size", isMobile ? "9px" : "10px")
+    .attr("text-anchor", "end")
+    .text("PPM");
+
+  const zones = [
+    { y0: 250, y1: 280, color: "#dcfce7", label: "" },
+    { y0: 280, y1: 350, color: "#fef9c3", label: "" },
+    { y0: 350, y1: 450, color: "#fed7aa", label: "" },
+    { y0: 450, y1: 480, color: "#fecaca", label: "" }
+  ];
+
+  zones.forEach(zone => {
+    svg.append("rect")
+      .attr("x", barX)
+      .attr("y", yScale(zone.y1))
+      .attr("width", barWidth)
+      .attr("height", yScale(zone.y0) - yScale(zone.y1))
+      .attr("fill", zone.color)
+      .attr("stroke", "#e5e7eb")
+      .attr("stroke-width", 0.5);
   });
+
+  svg.append("rect")
+    .attr("x", barX)
+    .attr("y", yScale(yearAvg))
+    .attr("width", barWidth)
+    .attr("height", yScale(280) - yScale(yearAvg))
+    .attr("fill", "#dc2626")
+    .attr("fill-opacity", 0.7);
+
+  const thresholdLines = [
+    { level: 280, label: "Pre-industrial (280)", color: "#22c55e" },
+    { level: 350, label: "Safe Limit (350)", color: "#f59e0b" },
+    { level: 450, label: "Point of No Return (450)", color: "#7f1d1d" }
+  ];
+
+  thresholdLines.forEach(t => {
+    svg.append("line")
+      .attr("x1", barX - 5)
+      .attr("x2", barX + barWidth + 5)
+      .attr("y1", yScale(t.level))
+      .attr("y2", yScale(t.level))
+      .attr("stroke", t.color)
+      .attr("stroke-width", 2)
+      .attr("stroke-dasharray", t.level === 450 ? "4,3" : "0");
+
+    svg.append("text")
+      .attr("x", barX + barWidth + 10)
+      .attr("y", yScale(t.level) + 4)
+      .attr("fill", t.color)
+      .attr("font-size", isMobile ? "9px" : "10px")
+      .attr("font-weight", "600")
+      .text(t.label);
+  });
+
+  svg.append("line")
+    .attr("x1", barX - 8)
+    .attr("x2", barX + barWidth + 8)
+    .attr("y1", yScale(yearAvg))
+    .attr("y2", yScale(yearAvg))
+    .attr("stroke", "#dc2626")
+    .attr("stroke-width", 3);
+
+  svg.append("circle")
+    .attr("cx", barX - 12)
+    .attr("cy", yScale(yearAvg))
+    .attr("r", 5)
+    .attr("fill", "#dc2626")
+    .attr("stroke", "white")
+    .attr("stroke-width", 2);
+
+  svg.append("text")
+    .attr("x", barX + barWidth + 10)
+    .attr("y", yScale(yearAvg) + 4)
+    .attr("fill", "#dc2626")
+    .attr("font-size", isMobile ? "10px" : "11px")
+    .attr("font-weight", "bold")
+    .text(`Current: ${yearAvg.toFixed(1)} PPM`);
+
+  if (projectedYear450 && projectedYear450 > selectedDashboardYear) {
+    svg.append("text")
+      .attr("x", barX + barWidth / 2)
+      .attr("y", height - 8)
+      .attr("text-anchor", "middle")
+      .attr("fill", "#7f1d1d")
+      .attr("font-size", isMobile ? "9px" : "10px")
+      .attr("font-weight", "600")
+      .text(`~${yearsTo450} years to 450 PPM (by ${projectedYear450})`);
+  }
+
+  return container.node();
 }
 ```
 
@@ -893,8 +970,8 @@ function decadeComparison({width} = {}) {
   </div>
 
   <div class="chart-container">
-    <h3>Seasonal Variation Pattern</h3>
-    ${resize((width) => seasonalPattern({width}))}
+    <h3>Critical CO₂ Thresholds</h3>
+    ${resize((width) => thresholdsChart({width}))}
   </div>
 
   <div class="chart-container">
