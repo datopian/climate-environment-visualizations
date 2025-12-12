@@ -196,7 +196,7 @@ function seaLevelChart(data, {width} = {}) {
     width,
     height: 400,
     marginLeft: 60,
-    x: {label: "Year", grid: true, domain: [1880, latestYear]},
+    x: {label: "Year", grid: true, domain: [1880, latestYear], tickFormat: d => String(d)},
     y: {label: "Sea Level Change (mm)", grid: true},
     color: {
       legend: true,
@@ -244,7 +244,7 @@ const selectedYear = view(Scrubber(years, {
   loop: false,
   initial: years.length - 1,
   autoplay: false,
-  format: d => d
+  format: d => String(d)
 }));
 ```
 
@@ -261,7 +261,7 @@ const selectedCorrelationYear = view(Scrubber(correlationYears, {
   loop: false,
   initial: correlationYears.length - 1,
   autoplay: false,
-  format: d => d
+  format: d => String(d)
 }));
 ```
 
@@ -488,7 +488,7 @@ const selectedTempYear = view(Scrubber(tempCorrelationYears, {
   loop: false,
   initial: tempCorrelationYears.length - 1,
   autoplay: false,
-  format: d => d
+  format: d => String(d)
 }));
 ```
 
@@ -749,7 +749,8 @@ function horizonChart({width} = {}) {
       domain: [1880, latestYear],
       grid: true,
       ticks: isMobile ? 5 : 10,
-      tickSize: 6
+      tickSize: 6,
+      tickFormat: d => String(d)
     },
     y: {
       axis: null,
@@ -895,7 +896,7 @@ function calendarHeatmap({width} = {}) {
       Plot.text(calendarData.filter(d => d.yearInDecade === 0 || d.yearInDecade === 9), {
         x: "yearInDecade",
         fy: "decadeLabel",
-        text: "year",
+        text: d => String(d.year),
         fontSize: 9,
         fill: "#1f2937",
         fontWeight: "bold",

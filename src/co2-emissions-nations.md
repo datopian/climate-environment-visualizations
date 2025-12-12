@@ -437,7 +437,7 @@ const selectedDashboardYear = view(Scrubber(dashboardYears, {
   loop: false,
   initial: dashboardYears.length - 1,
   autoplay: false,
-  format: d => d
+  format: d => String(d)
 }));
 ```
 
@@ -800,7 +800,7 @@ function historicalTrends({width} = {}) {
     x: {
       label: null,
       grid: true,
-      tickFormat: "d",
+      tickFormat: d => String(d),
       ticks: isMobile ? 5 : 8
     },
     y: {

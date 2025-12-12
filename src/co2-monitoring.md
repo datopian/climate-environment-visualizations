@@ -395,7 +395,7 @@ const selectedDashboardYear = view(Scrubber(dashboardYears, {
   loop: false,
   initial: dashboardYears.length - 1,
   autoplay: false,
-  format: d => d
+  format: d => String(d)
 }));
 ```
 
@@ -725,7 +725,8 @@ function rateOfIncreaseChart({width} = {}) {
     x: {
       label: null,
       grid: true,
-      ticks: isMobile ? 5 : 8
+      ticks: isMobile ? 5 : 8,
+      tickFormat: d => String(d)
     },
     y: {
       label: "Annual Increase (PPM/year)",

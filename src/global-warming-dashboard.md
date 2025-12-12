@@ -411,7 +411,7 @@ const selectedDashboardYear = view(Scrubber(dashboardYears, {
   loop: false,
   initial: dashboardYears.length - 1,
   autoplay: false,
-  format: d => d
+  format: d => String(d)
 }));
 ```
 
@@ -733,7 +733,8 @@ function rateOfChangeChart({width} = {}) {
     x: {
       label: "Year",
       grid: true,
-      ticks: isMobile ? 5 : 10
+      ticks: isMobile ? 5 : 10,
+      tickFormat: d => String(d)
     },
     y: {
       label: "Temperature Change (°C/decade)",
