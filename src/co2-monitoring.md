@@ -3,6 +3,19 @@ title: Atmospheric CO₂ Monitoring Dashboard
 toc: false
 ---
 
+<div class="portaljs-banner">
+  <div class="portaljs-banner-content">
+    <span class="portaljs-banner-icon">🌀</span>
+    <div class="portaljs-banner-text">
+      <p class="portaljs-banner-title">Create beautiful data portals with PortalJS</p>
+      <p class="portaljs-banner-description"> The open-source framework for building data catalogs, dashboards, and visualizations.</p>
+    </div>
+  </div>
+  <a href="https://www.portaljs.com/" target="_blank" rel="noopener noreferrer" class="portaljs-banner-cta">
+    Get Started Free <span class="portaljs-banner-cta-arrow">→</span>
+  </a>
+</div>
+
 <style>
 .hero {
   display: flex;
