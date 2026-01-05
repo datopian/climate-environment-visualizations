@@ -44,10 +44,7 @@ const glacierChange = latestGlacier.value - glaciersData[0].value;
 const co2Increase = latestCO2.average - firstCO2.average;
 ```
 
-<div class="hero">
-  <h1>Climate & Environment Data Portal</h1>
-  <p>Explore global warming indicators, sea level rise, glacier mass balance, and atmospheric CO₂ concentrations.</p>
-</div>
+
 
 ```js
 display(html`<div class="dashboard-container">
