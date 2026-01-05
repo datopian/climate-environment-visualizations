@@ -1,15 +1,86 @@
----
-toc: false
----
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="generator" content="Observable Framework v1.13.3">
+<title>PortalJS Data App</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_import/style.7a7f6120.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_import/style.7a7f6120.css">
+<link rel="modulepreload" href="./_observablehq/client.3714645d.js">
+<link rel="modulepreload" href="./_observablehq/runtime.e080113b.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.73a8ec5a.js">
+<link rel="modulepreload" href="./_npm/d3@7.9.0/e780feca.js">
+<link rel="modulepreload" href="./_npm/htl@0.3.1/72f4716c.js">
+<link rel="modulepreload" href="./_npm/@observablehq/plot@0.6.17/d761ef9b.js">
+<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/9cffc2bd.js">
+<link rel="modulepreload" href="./_npm/d3-array@3.2.4/e93ca09f.js">
+<link rel="modulepreload" href="./_npm/d3-axis@3.0.0/0f2de24d.js">
+<link rel="modulepreload" href="./_npm/d3-brush@3.0.0/65eb105b.js">
+<link rel="modulepreload" href="./_npm/d3-chord@3.0.1/7ef8fb2e.js">
+<link rel="modulepreload" href="./_npm/d3-color@3.1.0/aeb57b94.js">
+<link rel="modulepreload" href="./_npm/d3-contour@4.0.2/1d2aed74.js">
+<link rel="modulepreload" href="./_npm/d3-delaunay@6.0.4/5ced1d52.js">
+<link rel="modulepreload" href="./_npm/d3-dispatch@3.0.1/9ba9c7f3.js">
+<link rel="modulepreload" href="./_npm/d3-drag@3.0.0/4202580c.js">
+<link rel="modulepreload" href="./_npm/d3-ease@3.0.1/cdd7e898.js">
+<link rel="modulepreload" href="./_npm/d3-fetch@3.0.1/b4e2ad9a.js">
+<link rel="modulepreload" href="./_npm/d3-force@3.0.0/5e804d15.js">
+<link rel="modulepreload" href="./_npm/d3-format@3.1.0/86074ef6.js">
+<link rel="modulepreload" href="./_npm/d3-geo@3.1.1/40599fb3.js">
+<link rel="modulepreload" href="./_npm/d3-hierarchy@3.1.2/e49e792c.js">
+<link rel="modulepreload" href="./_npm/d3-interpolate@3.0.1/8d1e5425.js">
+<link rel="modulepreload" href="./_npm/d3-path@3.1.0/20d3f133.js">
+<link rel="modulepreload" href="./_npm/d3-polygon@3.0.1/7553081f.js">
+<link rel="modulepreload" href="./_npm/d3-quadtree@3.0.1/0dfd751c.js">
+<link rel="modulepreload" href="./_npm/d3-random@3.0.1/3c90ee06.js">
+<link rel="modulepreload" href="./_npm/d3-scale@4.0.2/843b6a76.js">
+<link rel="modulepreload" href="./_npm/d3-scale-chromatic@3.1.0/ba24c2e7.js">
+<link rel="modulepreload" href="./_npm/d3-selection@3.0.0/4d94e5b7.js">
+<link rel="modulepreload" href="./_npm/d3-shape@3.2.0/6d3a6726.js">
+<link rel="modulepreload" href="./_npm/d3-time@3.1.0/9f03c579.js">
+<link rel="modulepreload" href="./_npm/d3-time-format@4.1.0/07c9626f.js">
+<link rel="modulepreload" href="./_npm/d3-timer@3.0.1/b58a267d.js">
+<link rel="modulepreload" href="./_npm/d3-transition@3.0.1/004da2ac.js">
+<link rel="modulepreload" href="./_npm/d3-zoom@3.0.0/b5786b3f.js">
+<link rel="modulepreload" href="./_npm/isoformat@0.2.1/18cbf477.js">
+<link rel="modulepreload" href="./_npm/interval-tree-1d@1.0.4/53fe8176.js">
+<link rel="modulepreload" href="./_npm/internmap@2.0.3/e08981d9.js">
+<link rel="modulepreload" href="./_npm/delaunator@5.0.1/02d43215.js">
+<link rel="modulepreload" href="./_npm/binary-search-bounds@2.0.5/cbf6ba23.js">
+<link rel="modulepreload" href="./_npm/robust-predicates@3.0.2/aa00730b.js">
 
-```js
-const globalTempRaw = FileAttachment("data/global-temp-annual.csv").csv({typed: true});
-const csiroRaw = FileAttachment("data/CSIRO_Recons_gmsl_yr_2019.csv").csv({typed: true});
-const glaciersRaw = FileAttachment("data/glaciers.csv").csv({typed: true});
-const co2Raw = FileAttachment("data/co2-mm-mlo.csv").csv({typed: true});
-```
+  <link rel="icon" href="./_file/observable.1af93621.png" type="image/png" sizes="32x32">
+  <script>
+    sessionStorage.setItem("observablehq-sidebar", "false");
+  </script>
+  <script type="module">
+    import { inject } from 'https://esm.sh/@vercel/analytics@1.5.0';
+    inject();
+  </script>
+  
+<script type="module">
 
-```js
+import {define} from "./_observablehq/client.3714645d.js";
+import {registerFile} from "./_observablehq/stdlib.73a8ec5a.js";
+
+registerFile("./data/CSIRO_Recons_gmsl_yr_2019.csv", {"name":"./data/CSIRO_Recons_gmsl_yr_2019.csv","mimeType":"text/csv","path":"./_file/data/CSIRO_Recons_gmsl_yr_2019.4cf6e74a.csv","lastModified":1760221256949,"size":2111});
+registerFile("./data/co2-mm-mlo.csv", {"name":"./data/co2-mm-mlo.csv","mimeType":"text/csv","path":"./_file/data/co2-mm-mlo.894efb21.csv","lastModified":1761137951924,"size":37957});
+registerFile("./data/glaciers.csv", {"name":"./data/glaciers.csv","mimeType":"text/csv","path":"./_file/data/glaciers.95ba15b3.csv","lastModified":1761742928017,"size":1160});
+registerFile("./data/global-temp-annual.csv", {"name":"./data/global-temp-annual.csv","mimeType":"text/csv","path":"./_file/data/global-temp-annual.6d5c6fee.csv","lastModified":1761743599893,"size":6335});
+
+define({id: "f9677068", inputs: ["FileAttachment"], outputs: ["globalTempRaw","csiroRaw","glaciersRaw","co2Raw"], body: (FileAttachment) => {
+const globalTempRaw = FileAttachment("./data/global-temp-annual.csv").csv({typed: true});
+const csiroRaw = FileAttachment("./data/CSIRO_Recons_gmsl_yr_2019.csv").csv({typed: true});
+const glaciersRaw = FileAttachment("./data/glaciers.csv").csv({typed: true});
+const co2Raw = FileAttachment("./data/co2-mm-mlo.csv").csv({typed: true});
+return {globalTempRaw,csiroRaw,glaciersRaw,co2Raw};
+}});
+
+define({id: "b5853b2b", inputs: ["globalTempRaw","csiroRaw","glaciersRaw","co2Raw"], outputs: ["globalTempData","csiroData","glaciersData","co2Data","latestTemp","latestSeaLevel","latestGlacier","latestCO2","firstCO2","tempChange","seaLevelChange","glacierChange","co2Increase"], body: async (globalTempRaw,csiroRaw,glaciersRaw,co2Raw) => {
 const globalTempData = (await globalTempRaw)
   .filter(d => d.Source === "GISTEMP")
   .map(d => ({ year: +d.Year, value: +d.Mean }))
@@ -42,14 +113,10 @@ const tempChange = latestTemp.value - globalTempData[0].value;
 const seaLevelChange = latestSeaLevel.value - csiroData[0].value;
 const glacierChange = latestGlacier.value - glaciersData[0].value;
 const co2Increase = latestCO2.average - firstCO2.average;
-```
+return {globalTempData,csiroData,glaciersData,co2Data,latestTemp,latestSeaLevel,latestGlacier,latestCO2,firstCO2,tempChange,seaLevelChange,glacierChange,co2Increase};
+}});
 
-<div class="hero">
-  <h1>Climate & Environment Data Portal</h1>
-  <p>Explore global warming indicators, sea level rise, glacier mass balance, and atmospheric CO₂ concentrations.</p>
-</div>
-
-```js
+define({id: "0dedb65d", inputs: ["display","html","latestCO2","tempChange","seaLevelChange","glacierChange","resize","d3","globalTempData","csiroData","Plot","co2Data","glaciersData"], body: (display,html,latestCO2,tempChange,seaLevelChange,glacierChange,resize,d3,globalTempData,csiroData,Plot,co2Data,glaciersData) => {
 display(html`<div class="dashboard-container">
   <div class="dashboard-top">
     <div class="sidebar-section">
@@ -129,15 +196,6 @@ display(html`<div class="dashboard-container">
             .attr("viewBox", [0, 0, width, height])
             .style("overflow", "visible");
 
-          // Clipping path to prevent lines going off-chart
-          svg.append("defs").append("clipPath")
-            .attr("id", "chart-clip")
-            .append("rect")
-            .attr("x", marginLeft)
-            .attr("y", marginTop)
-            .attr("width", width - marginLeft - marginRight)
-            .attr("height", height - marginBottom - marginTop);
-
           const xScale = d3.scaleLinear().domain([1880, 2019]).range([marginLeft, width - marginRight]);
 
           const yTempScale = d3.scaleLinear()
@@ -167,24 +225,11 @@ display(html`<div class="dashboard-container">
 
           svg.append("g").attr("transform", `translate(${width - marginRight},0)`)
             .call(d3.axisRight(ySeaLevelScale).tickFormat(d => `${d}mm`))
-            .call(g => g.selectAll("text").attr("fill", "#1d4ed8").attr("font-weight", "bold"));
+            .call(g => g.selectAll("text").attr("fill", "#059669").attr("font-weight", "bold"));
 
-          // Lines with clipping
-          svg.append("path")
-            .datum(globalTempData)
-            .attr("fill", "none")
-            .attr("stroke", "#dc2626")
-            .attr("stroke-width", 2.5)
-            .attr("d", lineTemp)
-            .attr("clip-path", "url(#chart-clip)");
-
-          svg.append("path")
-            .datum(csiroData)
-            .attr("fill", "none")
-            .attr("stroke", "#1d4ed8")
-            .attr("stroke-width", 2.5)
-            .attr("d", lineSeaLevel)
-            .attr("clip-path", "url(#chart-clip)");
+          // Lines
+          svg.append("path").datum(globalTempData).attr("fill", "none").attr("stroke", "#dc2626").attr("stroke-width", 2.5).attr("d", lineTemp);
+          svg.append("path").datum(csiroData).attr("fill", "none").attr("stroke", "#059669").attr("stroke-width", 2.5).attr("d", lineSeaLevel);
 
           // Legend
           const legend = svg.append("g").attr("transform", `translate(${marginLeft + 20}, ${marginTop + 10})`);
@@ -193,7 +238,7 @@ display(html`<div class="dashboard-container">
           legend.append("line").attr("x1", 10).attr("x2", 30).attr("y1", 20).attr("y2", 20).attr("stroke", "#dc2626").attr("stroke-width", 2.5);
           legend.append("text").attr("x", 35).attr("y", 24).text("Temperature").attr("font-size", "11px").attr("font-weight", "600");
 
-          legend.append("line").attr("x1", 10).attr("x2", 30).attr("y1", 38).attr("y2", 38).attr("stroke", "#1d4ed8").attr("stroke-width", 2.5);
+          legend.append("line").attr("x1", 10).attr("x2", 30).attr("y1", 38).attr("y2", 38).attr("stroke", "#059669").attr("stroke-width", 2.5);
           legend.append("text").attr("x", 35).attr("y", 42).text("Sea Level").attr("font-size", "11px").attr("font-weight", "600");
 
           return container.node();
@@ -258,7 +303,7 @@ display(html`<div class="dashboard-container">
             marks: [
               Plot.ruleY([0]),
               Plot.areaY(yearlyRates, {x: "year", y: "rate", fill: "#dc2626", fillOpacity: 0.1, curve: "catmull-rom"}),
-              Plot.line(yearlyRates, {x: "year", y: "rate", stroke: "#dc2626", strokeWidth: 2, curve: "catmull-rom", clip: true}),
+              Plot.line(yearlyRates, {x: "year", y: "rate", stroke: "#dc2626", strokeWidth: 2, curve: "catmull-rom", clip: true}), // Added clip: true
               Plot.dot(yearlyRates, {x: "year", y: "rate", r: 2, fill: "transparent", tip: true})
             ]
           });
@@ -270,84 +315,36 @@ display(html`<div class="dashboard-container">
       <div class="chart-header"><h3 class="chart-title">Critical CO₂ Thresholds</h3></div>
       <div class="chart-content">
         ${resize((width) => {
-          // Horizontal Gauge / Thermometer Style
+          // Re-using the D3 logic but simplified for grid context
           const height = 260;
           const container = d3.create("div").style("position", "relative");
-          const svg = container.append("svg").attr("width", width).attr("height", height).attr("viewBox", [0, 0, width, height]);
+          const svg = container.append("svg").attr("width",  width).attr("height", height).attr("viewBox", [0, 0, width, height]);
 
-          const marginLeft=20, marginRight=20, marginTop=40, marginBottom=20;
-          const chartWidth = width - marginLeft - marginRight;
-          const barHeight = 60;
-          const barY = 100;
+          const marginTop=20, marginBottom=30, marginLeft=50, marginRight=20;
+          const yScale = d3.scaleLinear().domain([250, 480]).range([height - marginBottom, marginTop]);
+          const barX = marginLeft + 30;
+          const barWidth = Math.min(width - 100, 100);
 
-          const xScale = d3.scaleLinear().domain([250, 500]).range([marginLeft, width - marginRight]);
+          svg.append("g").attr("transform", `translate(${marginLeft},0)`).call(d3.axisLeft(yScale));
 
-          // Zones
           const zones = [
-             {min: 250, max: 280, color: "#22c55e", label: "Pre-Industrial"},
-             {min: 280, max: 350, color: "#f59e0b", label: "Safe"},
-             {min: 350, max: 450, color: "#f97316", label: "Risk"},
-             {min: 450, max: 500, color: "#dc2626", label: "Crisis"}
+            { y0: 250, y1: 280, color: "#dcfce7" },
+            { y0: 280, y1: 350, color: "#fef9c3" },
+            { y0: 350, y1: 450, color: "#fed7aa" },
+            { y0: 450, y1: 480, color: "#fecaca" }
           ];
 
-          // Draw zones
           zones.forEach(z => {
-             svg.append("rect")
-                .attr("x", xScale(z.min))
-                .attr("y", barY)
-                .attr("width", xScale(z.max) - xScale(z.min))
-                .attr("height", barHeight)
-                .attr("fill", z.color)
-                .attr("fill-opacity", 0.3)
-                .attr("stroke", "white");
-
-             // Labels
-             if (width > 400 || (z.label !== "Risk" && z.label !== "Safe")) {
-                svg.append("text")
-                   .attr("x", xScale(z.min) + 5)
-                   .attr("y", barY + barHeight + 15)
-                   .text(z.label)
-                   .attr("font-size", "10px")
-                   .attr("fill", "#555")
-                   .attr("font-weight", "600");
-             }
+             svg.append("rect").attr("x", barX).attr("y", yScale(z.y1)).attr("width", barWidth)
+             .attr("height", yScale(z.y0) - yScale(z.y1)).attr("fill", z.color);
           });
 
-          // Axis
-          svg.append("g").attr("transform", `translate(0, ${barY})`)
-             .call(d3.axisTop(xScale).tickValues([280, 350, 450]).tickFormat(d => d));
+          const cur = latestCO2.average;
+          svg.append("rect").attr("x", barX).attr("y", yScale(cur)).attr("width", barWidth)
+             .attr("height", yScale(280) - yScale(cur)).attr("fill", "#dc2626").attr("fill-opacity", 0.6);
 
-          // Current Value Marker
-          const currentVal = latestCO2.average;
-          const cx = xScale(currentVal);
-
-          svg.append("line")
-             .attr("x1", cx).attr("x2", cx)
-             .attr("y1", barY - 10).attr("y2", barY + barHeight + 10)
-             .attr("stroke", "#dc2626").attr("stroke-width", 3);
-
-          // Current Value Label (Tooltip style box)
-          const labelX = Math.min(Math.max(cx, marginLeft + 50), width - marginRight - 50);
-          svg.append("rect")
-             .attr("x", labelX - 45).attr("y", barY - 45)
-             .attr("width", 90).attr("height", 30).attr("rx", 4)
-             .attr("fill", "#dc2626");
-
-          svg.append("text")
-             .attr("x", labelX).attr("y", barY - 26)
-             .attr("text-anchor", "middle")
-             .attr("fill", "white")
-             .attr("font-weight", "bold")
-             .attr("font-size", "12px")
-             .text(`${currentVal.toFixed(1)} PPM`);
-
-          // Triangle pointer
-          const path = d3.path();
-          path.moveTo(cx, barY - 10);
-          path.lineTo(cx - 6, barY - 16);
-          path.lineTo(cx + 6, barY - 16);
-          path.closePath();
-          svg.append("path").attr("d", path).attr("fill", "#dc2626");
+          svg.append("line").attr("x1", barX).attr("x2", barX+barWidth).attr("y1", yScale(cur)).attr("y2", yScale(cur)).attr("stroke", "#dc2626").attr("stroke-width", 2);
+          svg.append("text").attr("x", barX+barWidth+5).attr("y", yScale(cur)+4).text(`Current: ${cur.toFixed(0)}`).attr("font-size", 11).attr("font-weight", "bold");
 
           return container.node();
         })}
@@ -360,4 +357,25 @@ display(html`<div class="dashboard-container">
     <span>Sources: NASA, CSIRO, WGMS, Scripps</span>
   </div>
 </div>`)
-```
+}});
+
+</script>
+</head>
+<body>
+<div id="observablehq-center">
+<main id="observablehq-main" class="observablehq">
+<div class="observablehq observablehq--block"><!--:f9677068:--></div>
+<div class="observablehq observablehq--block"><!--:b5853b2b:--></div>
+<div class="hero">
+  <h1>Climate &amp; Environment Data Portal</h1>
+  <p>Explore global warming indicators, sea level rise, glacier mass balance, and atmospheric CO₂ concentrations.</p>
+</div>
+<div class="observablehq observablehq--block"><observablehq-loading></observablehq-loading><!--:0dedb65d:--></div>
+</main>
+<footer id="observablehq-footer">
+<nav><a rel="next" href="./co2-emissions-nations"><span>Global CO2 Emissions by Nation</span></a></nav>
+<div>Built with Observable Framework. Sources: NASA GISTEMP, CSIRO, WGMS, Scripps CO₂.</div>
+</footer>
+</div>
+</body>
+</html>

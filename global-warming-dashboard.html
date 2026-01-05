@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="generator" content="Observable Framework v1.13.3">
+<title>Global Warming Effects Dashboard | PortalJS Data App</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_import/style.7a7f6120.css">
+<link rel="preload" as="style" href="./_observablehq/stdlib/inputs.ea9fd553.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_import/style.7a7f6120.css">
+<link rel="stylesheet" type="text/css" href="./_observablehq/stdlib/inputs.ea9fd553.css">
+<link rel="modulepreload" href="./_observablehq/client.3714645d.js">
+<link rel="modulepreload" href="./_observablehq/runtime.e080113b.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.73a8ec5a.js">
+<link rel="modulepreload" href="./_npm/d3@7.9.0/e780feca.js">
+<link rel="modulepreload" href="./_npm/htl@0.3.1/72f4716c.js">
+<link rel="modulepreload" href="./_observablehq/stdlib/inputs.4ef1d259.js">
+<link rel="modulepreload" href="./_npm/@observablehq/plot@0.6.17/d761ef9b.js">
+<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/9cffc2bd.js">
+<link rel="modulepreload" href="./_npm/isoformat@0.2.1/18cbf477.js">
+<link rel="modulepreload" href="./_npm/d3-array@3.2.4/e93ca09f.js">
+<link rel="modulepreload" href="./_npm/d3-axis@3.0.0/0f2de24d.js">
+<link rel="modulepreload" href="./_npm/d3-brush@3.0.0/65eb105b.js">
+<link rel="modulepreload" href="./_npm/d3-chord@3.0.1/7ef8fb2e.js">
+<link rel="modulepreload" href="./_npm/d3-color@3.1.0/aeb57b94.js">
+<link rel="modulepreload" href="./_npm/d3-contour@4.0.2/1d2aed74.js">
+<link rel="modulepreload" href="./_npm/d3-delaunay@6.0.4/5ced1d52.js">
+<link rel="modulepreload" href="./_npm/d3-dispatch@3.0.1/9ba9c7f3.js">
+<link rel="modulepreload" href="./_npm/d3-drag@3.0.0/4202580c.js">
+<link rel="modulepreload" href="./_npm/d3-ease@3.0.1/cdd7e898.js">
+<link rel="modulepreload" href="./_npm/d3-fetch@3.0.1/b4e2ad9a.js">
+<link rel="modulepreload" href="./_npm/d3-force@3.0.0/5e804d15.js">
+<link rel="modulepreload" href="./_npm/d3-format@3.1.0/86074ef6.js">
+<link rel="modulepreload" href="./_npm/d3-geo@3.1.1/40599fb3.js">
+<link rel="modulepreload" href="./_npm/d3-hierarchy@3.1.2/e49e792c.js">
+<link rel="modulepreload" href="./_npm/d3-interpolate@3.0.1/8d1e5425.js">
+<link rel="modulepreload" href="./_npm/d3-path@3.1.0/20d3f133.js">
+<link rel="modulepreload" href="./_npm/d3-polygon@3.0.1/7553081f.js">
+<link rel="modulepreload" href="./_npm/d3-quadtree@3.0.1/0dfd751c.js">
+<link rel="modulepreload" href="./_npm/d3-random@3.0.1/3c90ee06.js">
+<link rel="modulepreload" href="./_npm/d3-scale@4.0.2/843b6a76.js">
+<link rel="modulepreload" href="./_npm/d3-scale-chromatic@3.1.0/ba24c2e7.js">
+<link rel="modulepreload" href="./_npm/d3-selection@3.0.0/4d94e5b7.js">
+<link rel="modulepreload" href="./_npm/d3-shape@3.2.0/6d3a6726.js">
+<link rel="modulepreload" href="./_npm/d3-time@3.1.0/9f03c579.js">
+<link rel="modulepreload" href="./_npm/d3-time-format@4.1.0/07c9626f.js">
+<link rel="modulepreload" href="./_npm/d3-timer@3.0.1/b58a267d.js">
+<link rel="modulepreload" href="./_npm/d3-transition@3.0.1/004da2ac.js">
+<link rel="modulepreload" href="./_npm/d3-zoom@3.0.0/b5786b3f.js">
+<link rel="modulepreload" href="./_npm/interval-tree-1d@1.0.4/53fe8176.js">
+<link rel="modulepreload" href="./_npm/internmap@2.0.3/e08981d9.js">
+<link rel="modulepreload" href="./_npm/delaunator@5.0.1/02d43215.js">
+<link rel="modulepreload" href="./_npm/binary-search-bounds@2.0.5/cbf6ba23.js">
+<link rel="modulepreload" href="./_npm/robust-predicates@3.0.2/aa00730b.js">
+
+  <link rel="icon" href="./_file/observable.1af93621.png" type="image/png" sizes="32x32">
+  <script>
+    sessionStorage.setItem("observablehq-sidebar", "false");
+  </script>
+  <script type="module">
+    import { inject } from 'https://esm.sh/@vercel/analytics@1.5.0';
+    inject();
+  </script>
+  
+<script type="module">
+
+import {define} from "./_observablehq/client.3714645d.js";
+import {registerFile} from "./_observablehq/stdlib.73a8ec5a.js";
+
+registerFile("./data/CSIRO_Recons_gmsl_yr_2019.csv", {"name":"./data/CSIRO_Recons_gmsl_yr_2019.csv","mimeType":"text/csv","path":"./_file/data/CSIRO_Recons_gmsl_yr_2019.4cf6e74a.csv","lastModified":1760221256949,"size":2111});
+registerFile("./data/epa-sea-level.csv", {"name":"./data/epa-sea-level.csv","mimeType":"text/csv","path":"./_file/data/epa-sea-level.f65bea98.csv","lastModified":1760221220897,"size":6249});
+registerFile("./data/glaciers.csv", {"name":"./data/glaciers.csv","mimeType":"text/csv","path":"./_file/data/glaciers.95ba15b3.csv","lastModified":1761742928017,"size":1160});
+registerFile("./data/global-temp-annual.csv", {"name":"./data/global-temp-annual.csv","mimeType":"text/csv","path":"./_file/data/global-temp-annual.6d5c6fee.csv","lastModified":1761743599893,"size":6335});
+
+define({id: "ed1597f5", inputs: ["FileAttachment"], outputs: ["epaRaw","csiroRaw","glaciersRaw","globalTempRaw"], body: (FileAttachment) => {
+const epaRaw = FileAttachment("./data/epa-sea-level.csv").csv({typed: true});
+const csiroRaw = FileAttachment("./data/CSIRO_Recons_gmsl_yr_2019.csv").csv({typed: true});
+const glaciersRaw = FileAttachment("./data/glaciers.csv").csv({typed: true});
+const globalTempRaw = FileAttachment("./data/global-temp-annual.csv").csv({typed: true});
+return {epaRaw,csiroRaw,glaciersRaw,globalTempRaw};
+}});
+
+define({id: "b82d6312", inputs: ["csiroRaw","glaciersRaw","globalTempRaw"], outputs: ["csiroData","glaciersData","globalTempData","latestYear","baselineYear"], body: async (csiroRaw,glaciersRaw,globalTempRaw) => {
+const csiroData = (await csiroRaw).map(d => ({
+  year: +d.Time,
+  value: +d.GMSL
+})).filter(d => d.year >= 1880 && !isNaN(d.value));
+
+const glaciersData = (await glaciersRaw).map(d => ({
+  year: +d.Year,
+  value: +d["Mean cumulative mass balance"]
+})).filter(d => !isNaN(d.value) && d.year >= 1956);
+
+const globalTempData = (await globalTempRaw)
+  .filter(d => d.Source === "GISTEMP")
+  .map(d => ({
+    year: +d.Year,
+    value: +d.Mean
+  }))
+  .filter(d => !isNaN(d.value) && d.year >= 1880);
+
+const latestYear = 2019;
+const baselineYear = 1880;
+return {csiroData,glaciersData,globalTempData,latestYear,baselineYear};
+}});
+
+define({id: "86ac798e", inputs: ["globalTempData","latestYear","baselineYear","csiroData","glaciersData"], outputs: ["latestTemp","baselineTemp","tempChange","latestSeaLevel","baselineSeaLevel","seaLevelChange","latestGlacier","baselineGlacier","glacierChange"], body: (globalTempData,latestYear,baselineYear,csiroData,glaciersData) => {
+const latestTemp = globalTempData.find(d => d.year === latestYear).value;
+const baselineTemp = globalTempData.find(d => d.year === baselineYear).value;
+const tempChange = latestTemp - baselineTemp;
+
+const latestSeaLevel = csiroData.find(d => d.year === latestYear).value;
+const baselineSeaLevel = csiroData.find(d => d.year === baselineYear).value;
+const seaLevelChange = latestSeaLevel - baselineSeaLevel;
+
+const latestGlacier = glaciersData.find(d => d.year === latestYear).value;
+const baselineGlacier = glaciersData.find(d => d.year === 1956).value;
+const glacierChange = latestGlacier - baselineGlacier;
+return {latestTemp,baselineTemp,tempChange,latestSeaLevel,baselineSeaLevel,seaLevelChange,latestGlacier,baselineGlacier,glacierChange};
+}});
+
+define({id: "b7a6d981", inputs: ["html","Inputs"], outputs: ["Scrubber"], body: (html,Inputs) => {
+// This function was implemented manually because ObservableHQ framework doesnt have the necessary lib for the framework, the lib only works in their notebook*...
+function Scrubber(values, {format = value => value, initial = 0, direction = 1, delay = null, autoplay = true, loop = true, loopDelay = null, alternate = false} = {}) {
+  values = Array.from(values);
+  const form = html`<form style="font: 10px var(--sans-serif); display: flex; flex-direction: column; gap: 0.5rem;"><button name=b type=button style="width: 100%; padding: 0.3rem; font-size: 10px;"></button><label style="display: flex; flex-direction: column; gap: 0.25rem;"><input name=i type=range min=0 max=${values.length - 1} value=${initial} step=1 style="width: 100%;"><output name=o style="font-size: 11px; font-weight: 600; text-align: center;"></output></label></form>`;
+  let frame = null, timer = null, interval = null;
+  const start = () => { form.b.textContent = "Pause"; if (delay === null) frame = requestAnimationFrame(tick); else interval = setInterval(tick, delay); };
+  const stop = () => { form.b.textContent = "Play"; if (frame !== null) cancelAnimationFrame(frame), frame = null; if (timer !== null) clearTimeout(timer), timer = null; if (interval !== null) clearInterval(interval), interval = null; };
+  const running = () => frame !== null || timer !== null || interval !== null;
+  const step = () => { form.i.valueAsNumber = (form.i.valueAsNumber + direction + values.length) % values.length; form.i.dispatchEvent(new CustomEvent("input", {bubbles: true})); };
+  const tick = () => { if (form.i.valueAsNumber === (direction > 0 ? values.length - 1 : direction < 0 ? 0 : NaN)) { if (!loop) return stop(); if (alternate) direction = -direction; if (loopDelay !== null) { if (frame !== null) cancelAnimationFrame(frame), frame = null; if (interval !== null) clearInterval(interval), interval = null; timer = setTimeout(() => (step(), start()), loopDelay); return; } } if (delay === null) frame = requestAnimationFrame(tick); step(); };
+  form.i.oninput = event => { if (event && event.isTrusted && running()) stop(); form.value = values[form.i.valueAsNumber]; form.o.value = format(form.value, form.i.valueAsNumber, values); };
+  form.b.onclick = () => { if (running()) return stop(); direction = alternate && form.i.valueAsNumber === values.length - 1 ? -1 : 1; form.i.valueAsNumber = (form.i.valueAsNumber + direction) % values.length; form.i.dispatchEvent(new CustomEvent("input", {bubbles: true})); start(); };
+  form.i.oninput();
+  if (autoplay) start(); else stop();
+  Inputs.disposal(form).then(stop);
+  return form;
+}
+return {Scrubber};
+}});
+
+define({id: "29b1f191", inputs: ["d3","view","Scrubber"], outputs: ["dashboardYears","selectedDashboardYear"], body: (d3,view,Scrubber) => {
+const dashboardYears = d3.range(1880, 2020);
+const selectedDashboardYear = view(Scrubber(dashboardYears, {
+  delay: 100,
+  loop: false,
+  initial: dashboardYears.length - 1,
+  autoplay: false,
+  format: d => String(d)
+}));
+return {dashboardYears,selectedDashboardYear};
+}});
+
+define({id: "38959227", mode: "inline", inputs: ["tempChange","display"], body: async (tempChange,display) => {
+display(await(
+tempChange.toFixed(2)
+))
+}});
+
+define({id: "0a723573", mode: "inline", inputs: ["baselineYear","display"], body: async (baselineYear,display) => {
+display(await(
+baselineYear
+))
+}});
+
+define({id: "654a0e10", mode: "inline", inputs: ["seaLevelChange","display"], body: async (seaLevelChange,display) => {
+display(await(
+seaLevelChange.toFixed(0)
+))
+}});
+
+define({id: "0a723573-1", mode: "inline", inputs: ["baselineYear","display"], body: async (baselineYear,display) => {
+display(await(
+baselineYear
+))
+}});
+
+define({id: "93a8a6ac", mode: "inline", inputs: ["glacierChange","display"], body: async (glacierChange,display) => {
+display(await(
+glacierChange.toFixed(1)
+))
+}});
+
+define({id: "38959227-1", mode: "inline", inputs: ["tempChange","display"], body: async (tempChange,display) => {
+display(await(
+tempChange.toFixed(2)
+))
+}});
+
+define({id: "654a0e10-1", mode: "inline", inputs: ["seaLevelChange","display"], body: async (seaLevelChange,display) => {
+display(await(
+seaLevelChange.toFixed(0)
+))
+}});
+
+define({id: "8b22ab26", mode: "inline", inputs: ["glacierChange","display"], body: async (glacierChange,display) => {
+display(await(
+Math.abs(glacierChange).toFixed(1)
+))
+}});
+
+define({id: "43e3970c", inputs: ["globalTempData","selectedDashboardYear","csiroData"], outputs: ["filteredTemp","filteredSeaLevel"], body: (globalTempData,selectedDashboardYear,csiroData) => {
+const filteredTemp = globalTempData.filter(d => d.year <= selectedDashboardYear);
+const filteredSeaLevel = csiroData.filter(d => d.year <= selectedDashboardYear);
+return {filteredTemp,filteredSeaLevel};
+}});
+
+define({id: "39852187", inputs: ["d3","globalTempData","csiroData","filteredTemp","filteredSeaLevel","selectedDashboardYear"], outputs: ["tripleAxisChart"], body: (d3,globalTempData,csiroData,filteredTemp,filteredSeaLevel,selectedDashboardYear) => {
+function tripleAxisChart({width} = {}) {
+  const isMobile = width < 640;
+  const height = isMobile ? 320 : 340;
+  const marginTop = 20;
+  const marginRight = isMobile ? 45 : 55;
+  const marginBottom = isMobile ? 60 : 50;
+  const marginLeft = isMobile ? 45 : 55;
+
+  const xScale = d3.scaleLinear()
+    .domain([1880, 2019])
+    .range([marginLeft, width - marginRight]);
+
+  const yTempScale = d3.scaleLinear()
+    .domain([d3.min(globalTempData, d => d.value), d3.max(globalTempData, d => d.value)])
+    .range([height - marginBottom, marginTop])
+    .nice();
+
+  const ySeaLevelScale = d3.scaleLinear()
+    .domain([d3.min(csiroData, d => d.value), d3.max(csiroData, d => d.value)])
+    .range([height - marginBottom, marginTop])
+    .nice();
+
+  const lineTemp = d3.line()
+    .x(d => xScale(d.year))
+    .y(d => yTempScale(d.value))
+    .curve(d3.curveCatmullRom);
+
+  const lineSeaLevel = d3.line()
+    .x(d => xScale(d.year))
+    .y(d => ySeaLevelScale(d.value))
+    .curve(d3.curveCatmullRom);
+
+  const container = d3.create("div")
+    .style("position", "relative");
+
+  const svg = container.append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("viewBox", [0, 0, width, height])
+    .attr("style", "max-width: 100%; height: auto; background: white; display: block;");
+
+  const tooltip = container.append("div")
+    .style("position", "absolute")
+    .style("visibility", "hidden")
+    .style("background", "white")
+    .style("border", "1px solid #ccc")
+    .style("border-radius", "4px")
+    .style("padding", "8px")
+    .style("font-size", "12px")
+    .style("font-family", "system-ui, sans-serif")
+    .style("pointer-events", "none")
+    .style("box-shadow", "0 2px 4px rgba(0,0,0,0.1)")
+    .style("z-index", "1000")
+    .style("line-height", "1.5");
+
+  const hoverCircleTemp = svg.append("circle")
+    .attr("r", 5)
+    .attr("fill", "#dc2626")
+    .attr("stroke", "white")
+    .attr("stroke-width", 2)
+    .style("visibility", "hidden")
+    .style("pointer-events", "none");
+
+  const hoverCircleSea = svg.append("circle")
+    .attr("r", 5)
+    .attr("fill", "#059669")
+    .attr("stroke", "white")
+    .attr("stroke-width", 2)
+    .style("visibility", "hidden")
+    .style("pointer-events", "none");
+
+  svg.append("g")
+    .attr("class", "grid")
+    .attr("transform", `translate(0,${height - marginBottom})`)
+    .call(d3.axisBottom(xScale)
+      .tickFormat("")
+      .tickSize(-(height - marginTop - marginBottom)))
+    .call(g => g.select(".domain").remove())
+    .call(g => g.selectAll(".tick line")
+      .attr("stroke", "#e5e7eb")
+      .attr("stroke-opacity", 0.7));
+
+  svg.append("g")
+    .attr("class", "grid")
+    .attr("transform", `translate(${marginLeft},0)`)
+    .call(d3.axisLeft(yTempScale)
+      .tickFormat("")
+      .tickSize(-(width - marginLeft - marginRight)))
+    .call(g => g.select(".domain").remove())
+    .call(g => g.selectAll(".tick line")
+      .attr("stroke", "#e5e7eb")
+      .attr("stroke-opacity", 0.7));
+
+  svg.append("g")
+    .attr("transform", `translate(0,${height - marginBottom})`)
+    .call(d3.axisBottom(xScale).tickFormat(d3.format("d")).ticks(isMobile ? 5 : 10).tickSize(0).tickPadding(8))
+    .call(g => g.select(".domain").attr("stroke", "#ccc"))
+    .call(g => g.selectAll("text").attr("font-size", isMobile ? "10px" : "11px"));
+
+  svg.append("g")
+    .attr("transform", `translate(${marginLeft},0)`)
+    .call(d3.axisLeft(yTempScale).ticks(isMobile ? 5 : 7).tickSize(0).tickPadding(6).tickFormat(d => `${d}°C`))
+    .call(g => g.select(".domain").attr("stroke", "#ccc"))
+    .call(g => g.selectAll("text").attr("font-size", isMobile ? "10px" : "11px"));
+
+  svg.append("g")
+    .attr("transform", `translate(${width - marginRight},0)`)
+    .call(d3.axisRight(ySeaLevelScale).ticks(isMobile ? 5 : 7).tickSize(0).tickPadding(6).tickFormat(d => `${d}mm`))
+    .call(g => g.select(".domain").attr("stroke", "#ccc"))
+    .call(g => g.selectAll("text").attr("font-size", isMobile ? "10px" : "11px"));
+
+  svg.append("path")
+    .datum(filteredTemp)
+    .attr("fill", "none")
+    .attr("stroke", "#dc2626")
+    .attr("stroke-width", 3)
+    .attr("d", lineTemp);
+
+  svg.append("path")
+    .datum(filteredSeaLevel)
+    .attr("fill", "none")
+    .attr("stroke", "#059669")
+    .attr("stroke-width", 3)
+    .attr("d", lineSeaLevel);
+
+  svg.append("rect")
+    .attr("x", marginLeft)
+    .attr("y", marginTop)
+    .attr("width", width - marginLeft - marginRight)
+    .attr("height", height - marginTop - marginBottom)
+    .attr("fill", "none")
+    .attr("pointer-events", "all")
+    .on("mousemove", function(event) {
+      const [mx] = d3.pointer(event, svg.node());
+      const year = Math.round(xScale.invert(mx));
+
+      const tempData = filteredTemp.find(d => d.year === year);
+      const seaData = filteredSeaLevel.find(d => d.year === year);
+
+      if (tempData && seaData) {
+        const tempX = xScale(tempData.year);
+        const tempY = yTempScale(tempData.value);
+        const seaY = ySeaLevelScale(seaData.value);
+
+        hoverCircleTemp
+          .attr("cx", tempX)
+          .attr("cy", tempY)
+          .style("visibility", "visible");
+
+        hoverCircleSea
+          .attr("cx", tempX)
+          .attr("cy", seaY)
+          .style("visibility", "visible");
+
+        tooltip
+          .html(`<strong>${year}</strong><br/>Temperature: ${tempData.value.toFixed(2)}°C<br/>Sea Level: ${seaData.value.toFixed(0)}mm`)
+          .style("visibility", "visible");
+
+        const tooltipNode = tooltip.node();
+        const tooltipWidth = tooltipNode.offsetWidth;
+        const tooltipHeight = tooltipNode.offsetHeight;
+
+        const midY = (tempY + seaY) / 2;
+        let left = tempX + 15;
+        let top = midY - tooltipHeight / 2;
+
+        if (left + tooltipWidth > width - marginRight) {
+          left = tempX - tooltipWidth - 15;
+        }
+        if (top < marginTop) top = marginTop;
+        if (top + tooltipHeight > height - marginBottom) top = height - marginBottom - tooltipHeight;
+
+        tooltip
+          .style("left", `${left}px`)
+          .style("top", `${top}px`);
+      }
+    })
+    .on("mouseout", () => {
+      tooltip.style("visibility", "hidden");
+      hoverCircleTemp.style("visibility", "hidden");
+      hoverCircleSea.style("visibility", "hidden");
+    });
+
+  if (selectedDashboardYear >= 1880) {
+    svg.append("line")
+      .attr("x1", xScale(selectedDashboardYear))
+      .attr("x2", xScale(selectedDashboardYear))
+      .attr("y1", marginTop)
+      .attr("y2", height - marginBottom)
+      .attr("stroke", "#f59e0b")
+      .attr("stroke-width", 2)
+      .attr("stroke-dasharray", "4,4");
+
+    const tempPoint = filteredTemp.find(d => d.year === selectedDashboardYear);
+    if (tempPoint) {
+      svg.append("circle")
+        .attr("cx", xScale(tempPoint.year))
+        .attr("cy", yTempScale(tempPoint.value))
+        .attr("r", 6)
+        .attr("fill", "#dc2626")
+        .attr("stroke", "white")
+        .attr("stroke-width", 2);
+    }
+
+    const seaLevelPoint = filteredSeaLevel.find(d => d.year === selectedDashboardYear);
+    if (seaLevelPoint) {
+      svg.append("circle")
+        .attr("cx", xScale(seaLevelPoint.year))
+        .attr("cy", ySeaLevelScale(seaLevelPoint.value))
+        .attr("r", 6)
+        .attr("fill", "#059669")
+        .attr("stroke", "white")
+        .attr("stroke-width", 2);
+    }
+  }
+
+  const legend = svg.append("g")
+    .attr("transform", `translate(${width / 2 - (isMobile ? 95 : 160)}, ${height - (isMobile ? 15 : 12)})`);
+
+  legend.append("line")
+    .attr("x1", 0)
+    .attr("x2", isMobile ? 18 : 25)
+    .attr("y1", 0)
+    .attr("y2", 0)
+    .attr("stroke", "#dc2626")
+    .attr("stroke-width", 2.5);
+
+  legend.append("text")
+    .attr("x", isMobile ? 22 : 30)
+    .attr("y", 4)
+    .attr("fill", "currentColor")
+    .attr("font-size", isMobile ? "10px" : "11px")
+    .text(isMobile ? "Temperature" : "Temperature (°C)");
+
+  legend.append("line")
+    .attr("x1", isMobile ? 95 : 150)
+    .attr("x2", isMobile ? 113 : 175)
+    .attr("y1", 0)
+    .attr("y2", 0)
+    .attr("stroke", "#059669")
+    .attr("stroke-width", 2.5);
+
+  legend.append("text")
+    .attr("x", isMobile ? 117 : 180)
+    .attr("y", 4)
+    .attr("fill", "currentColor")
+    .attr("font-size", isMobile ? "10px" : "11px")
+    .text(isMobile ? "Sea Level" : "Sea Level (mm)");
+
+  return container.node();
+}
+return {tripleAxisChart};
+}});
+
+define({id: "02eea729", inputs: ["globalTempData","selectedDashboardYear"], outputs: ["tempRateData","filteredTempRateData"], body: (globalTempData,selectedDashboardYear) => {
+const tempRateData = globalTempData.slice(1).map((d, i) => ({
+  year: d.year,
+  rate: (d.value - globalTempData[i].value) * 10
+})).filter(d => d.year >= 1880 && d.year <= 2019);
+
+const filteredTempRateData = tempRateData.filter(d => d.year <= selectedDashboardYear);
+return {tempRateData,filteredTempRateData};
+}});
+
+define({id: "7e2bd45c", inputs: ["Plot","filteredTempRateData","selectedDashboardYear"], outputs: ["rateOfChangeChart"], body: (Plot,filteredTempRateData,selectedDashboardYear) => {
+function rateOfChangeChart({width} = {}) {
+  const isMobile = width < 640;
+
+  return Plot.plot({
+    width,
+    height: isMobile ? 260 : 240,
+    marginLeft: isMobile ? 40 : 50,
+    marginRight: isMobile ? 40 : 50,
+    marginBottom: isMobile ? 40 : 30,
+    style: {
+      fontSize: isMobile ? "11px" : "13px"
+    },
+    x: {
+      label: "Year",
+      grid: true,
+      ticks: isMobile ? 5 : 10,
+      tickFormat: d => String(d)
+    },
+    y: {
+      label: "Temperature Change (°C/decade)",
+      grid: true
+    },
+    marks: [
+      Plot.ruleY([0], {stroke: "#94a3b8", strokeDasharray: "2,2"}),
+      Plot.line(filteredTempRateData, {
+        x: "year",
+        y: "rate",
+        stroke: "#dc2626",
+        strokeWidth: 2,
+        curve: "catmull-rom"
+      }),
+      Plot.dot(filteredTempRateData, {
+        x: "year",
+        y: "rate",
+        r: 3,
+        fill: "transparent",
+        stroke: "transparent",
+        tip: true,
+        title: d => `Year: ${d.year}\nRate: ${d.rate.toFixed(3)}°C/decade`
+      }),
+      Plot.ruleX([selectedDashboardYear], {stroke: "#f59e0b", strokeWidth: 2, strokeDasharray: "4,4"}),
+      Plot.dot(filteredTempRateData.filter(d => d.year === selectedDashboardYear), {
+        x: "year",
+        y: "rate",
+        fill: "#dc2626",
+        stroke: "white",
+        strokeWidth: 2,
+        r: 6
+      })
+    ]
+  });
+}
+return {rateOfChangeChart};
+}});
+
+define({id: "54d4d9ab", inputs: ["glaciersData","globalTempData","selectedDashboardYear"], outputs: ["glacierTempData","filteredGlacierTempData"], body: (glaciersData,globalTempData,selectedDashboardYear) => {
+const glacierTempData = glaciersData
+  .map(d => ({
+    year: d.year,
+    glacier: d.value,
+    temp: globalTempData.find(t => t.year === d.year)?.value
+  }))
+  .filter(d => d.temp !== undefined);
+
+const filteredGlacierTempData = glacierTempData.filter(d => d.year <= selectedDashboardYear);
+return {glacierTempData,filteredGlacierTempData};
+}});
+
+define({id: "1307af7e", inputs: ["Plot","filteredGlacierTempData","selectedDashboardYear"], outputs: ["glacierTempScatter"], body: (Plot,filteredGlacierTempData,selectedDashboardYear) => {
+function glacierTempScatter({width} = {}) {
+  const isMobile = width < 640;
+
+  return Plot.plot({
+    width,
+    height: isMobile ? 260 : 240,
+    marginLeft: isMobile ? 40 : 50,
+    marginRight: isMobile ? 20 : 30,
+    marginBottom: isMobile ? 55 : 65,
+    style: {
+      fontSize: isMobile ? "11px" : "13px"
+    },
+    x: {
+      label: "Global Temperature Anomaly (°C)",
+      grid: true
+    },
+    y: {
+      label: "Glacier Mass Balance (m)",
+      grid: true
+    },
+    color: {
+      type: "linear",
+      scheme: "YlOrRd",
+      legend: true,
+      label: "Year"
+    },
+    marks: [
+      Plot.dot(filteredGlacierTempData, {
+        x: "temp",
+        y: "glacier",
+        fill: "year",
+        r: 4,
+        tip: true,
+        title: d => `Year: ${d.year}\nTemperature: ${d.temp.toFixed(2)}°C\nGlacier Mass: ${d.glacier.toFixed(2)}m`
+      }),
+      Plot.linearRegressionY(filteredGlacierTempData, {
+        x: "temp",
+        y: "glacier",
+        stroke: "#1f2937",
+        strokeWidth: 2,
+        strokeDasharray: "4,4"
+      }),
+      Plot.dot(filteredGlacierTempData.filter(d => d.year === selectedDashboardYear), {
+        x: "temp",
+        y: "glacier",
+        fill: "#f59e0b",
+        stroke: "white",
+        strokeWidth: 2,
+        r: 8
+      })
+    ]
+  });
+}
+return {glacierTempScatter};
+}});
+
+define({id: "8c34443b", inputs: ["d3","globalTempData","csiroData","selectedDashboardYear"], outputs: ["decadeComparison","decadeData","filteredDecadeData"], body: (d3,globalTempData,csiroData,selectedDashboardYear) => {
+const decadeComparison = d3.rollup(
+  globalTempData.filter(d => d.year >= 1880 && d.year < 2020),
+  v => ({
+    avgTemp: d3.mean(v, d => d.value),
+    avgSeaLevel: d3.mean(csiroData.filter(s => s.year >= v[0].year && s.year < v[0].year + 10), d => d.value)
+  }),
+  d => Math.floor(d.year / 10) * 10
+);
+
+const decadeData = Array.from(decadeComparison, ([decade, values]) => ({
+  decade: `${decade}s`,
+  decadeNum: decade,
+  temp: values.avgTemp,
+  seaLevel: values.avgSeaLevel
+})).sort((a, b) => a.decadeNum - b.decadeNum);
+
+const filteredDecadeData = decadeData.filter(d => d.decadeNum <= Math.floor(selectedDashboardYear / 10) * 10);
+return {decadeComparison,decadeData,filteredDecadeData};
+}});
+
+define({id: "cea01cc2", inputs: ["selectedDashboardYear","Plot","filteredDecadeData"], outputs: ["decadeComparisonChart"], body: (selectedDashboardYear,Plot,filteredDecadeData) => {
+function decadeComparisonChart({width} = {}) {
+  const isMobile = width < 640;
+  const currentDecade = Math.floor(selectedDashboardYear / 10) * 10;
+
+  return Plot.plot({
+    width,
+    height: isMobile ? 260 : 240,
+    marginLeft: isMobile ? 40 : 50,
+    marginRight: isMobile ? 20 : 30,
+    marginBottom: isMobile ? 65 : 65,
+    style: {
+      fontSize: isMobile ? "11px" : "13px"
+    },
+    x: {
+      label: null,
+      tickRotate: -45
+    },
+    y: {
+      label: "Average Temperature Anomaly (°C)",
+      grid: true
+    },
+    color: {
+      legend: false
+    },
+    marks: [
+      Plot.barY(filteredDecadeData, {
+        x: "decade",
+        y: "temp",
+        fill: d => d.decadeNum === currentDecade ? "#f59e0b" : "temp",
+        fillOpacity: d => d.decadeNum === currentDecade ? 1 : 0.8,
+        stroke: d => d.decadeNum === currentDecade ? "white" : "none",
+        strokeWidth: 2,
+        tip: true,
+        title: d => `${d.decade}\nAvg Temp: ${d.temp.toFixed(3)}°C\nAvg Sea Level: ${d.seaLevel.toFixed(1)}mm`
+      }),
+      Plot.ruleY([0])
+    ]
+  });
+}
+return {decadeComparisonChart};
+}});
+
+define({id: "ba4c6d2d", mode: "inline", inputs: ["resize","tripleAxisChart","display"], body: async (resize,tripleAxisChart,display) => {
+display(await(
+resize((width) => tripleAxisChart({width}))
+))
+}});
+
+define({id: "b0a3ce8c", mode: "inline", inputs: ["resize","rateOfChangeChart","display"], body: async (resize,rateOfChangeChart,display) => {
+display(await(
+resize((width) => rateOfChangeChart({width}))
+))
+}});
+
+define({id: "f85dea00", mode: "inline", inputs: ["resize","glacierTempScatter","display"], body: async (resize,glacierTempScatter,display) => {
+display(await(
+resize((width) => glacierTempScatter({width}))
+))
+}});
+
+define({id: "e23a402c", mode: "inline", inputs: ["resize","decadeComparisonChart","display"], body: async (resize,decadeComparisonChart,display) => {
+display(await(
+resize((width) => decadeComparisonChart({width}))
+))
+}});
+
+</script>
+</head>
+<body>
+<div id="observablehq-center">
+<main id="observablehq-main" class="observablehq">
+<div class="portaljs-banner">
+  <div class="portaljs-banner-content">
+    <span class="portaljs-banner-icon">🌀</span>
+    <div class="portaljs-banner-text">
+      <p class="portaljs-banner-title">Create beautiful data portals with PortalJS</p>
+      <p class="portaljs-banner-description"> The open-source framework for building data catalogs, dashboards, and visualizations.</p>
+    </div>
+  </div>
+  <a href="https://www.portaljs.com/" target="_blank" rel="noopener noreferrer" class="portaljs-banner-cta">
+    Get Started Free <span class="portaljs-banner-cta-arrow">→</span>
+  </a>
+</div>
+<style>
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  background: var(--theme-background-alt);
+  color: var(--theme-foreground);
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  border: 2px solid var(--theme-foreground-faint);
+  overflow-anchor: none !important;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--theme-foreground-alt);
+  max-width: 100%;
+}
+
+.hero p {
+  margin: 0.2rem 0 0;
+  font-size: 0.8rem;
+  color: var(--theme-foreground-muted);
+  max-width: 100%;
+}
+
+* {
+  overflow-anchor: none !important;
+}
+
+body {
+  overflow-anchor: none !important;
+}
+
+.card, .card > *, .card svg, .card figure {
+  overflow-anchor: none !important;
+  contain: layout style paint;
+}
+
+.card, .grid {
+  max-width: 100% !important;
+}
+
+.chart-container {
+  overflow-anchor: none !important;
+  contain: layout style paint;
+  min-height: 280px;
+}
+
+.chart-grid {
+  overflow-anchor: none !important;
+}
+
+svg, svg * {
+  overflow-anchor: none !important;
+}
+
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 1rem;
+  margin: 0 0 3rem 0;
+  overflow-anchor: none !important;
+  min-height: 0;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-right: 0.5rem;
+  border-right: 1px solid var(--theme-foreground-faint);
+}
+
+.stat-card {
+  background: var(--theme-background-alt);
+  border: 2px solid var(--theme-foreground-faint);
+  border-radius: 6px;
+  padding: 0.75rem;
+  text-align: left;
+  overflow-anchor: none !important;
+}
+
+.stat-value {
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: var(--theme-foreground-alt);
+  margin: 0.2rem 0;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: var(--theme-foreground-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.stat-change {
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-top: 0.2rem;
+  color: var(--theme-foreground-muted);
+}
+
+.positive { color: #dc2626; }
+.negative { color: #059669; }
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-height: 400px;
+  background: white;
+  border: 1px solid var(--theme-foreground-faint);
+  border-radius: 6px;
+  overflow: visible;
+}
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  overflow-anchor: none !important;
+  contain: layout;
+}
+
+.chart-grid .chart-container {
+  border: none;
+  border-radius: 0;
+  position: relative;
+}
+
+.chart-grid .chart-container:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #e5e7eb;
+}
+
+.chart-large {
+  min-height: 380px !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  border-radius: 0 !important;
+  margin-bottom: 0;
+  position: relative;
+}
+
+.chart-large::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+.chart-wide {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 1200px) {
+  .chart-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 1024px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-right: none;
+    border-bottom: 1px solid var(--theme-foreground-faint);
+    padding-right: 0;
+    padding-bottom: 0.75rem;
+  }
+
+  .controls-section {
+    width: 100%;
+  }
+
+  .stat-card {
+    flex: 1;
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .chart-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-grid .chart-container:not(:last-child)::after {
+    width: 100%;
+    height: 1px;
+    right: auto;
+    left: 0;
+    top: auto;
+    bottom: 0;
+  }
+
+  .chart-container {
+    min-height: 280px;
+  }
+
+  .sidebar {
+    flex-direction: column;
+  }
+
+  .stat-card {
+    min-width: auto;
+  }
+
+  .dashboard-layout {
+    max-height: none;
+  }
+
+  .main-content {
+    max-height: none;
+  }
+}
+
+.chart-container {
+  background: white;
+  border: none;
+  border-radius: 0;
+  padding: 0.75rem;
+}
+
+.chart-container h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--theme-foreground);
+  overflow-anchor: none !important;
+}
+
+.chart-container > * {
+  overflow-anchor: none !important;
+}
+
+.controls-section {
+  background: var(--theme-background-alt);
+  border: 2px solid var(--theme-foreground-faint);
+  border-radius: 6px;
+  padding: 0.65rem;
+}
+
+.controls-section h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--theme-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.insights-section {
+  background: var(--theme-background-alt);
+  border: 2px solid var(--theme-foreground-faint);
+  border-radius: 6px;
+  padding: 0.65rem;
+  font-size: 0.7rem;
+  line-height: 1.4;
+}
+
+.insights-section h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--theme-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.insights-section ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  list-style-type: none;
+}
+
+.insights-section li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 0.5rem;
+}
+
+.insights-section li::before {
+  content: "•";
+  position: absolute;
+  left: -0.5rem;
+  color: var(--theme-foreground-focus);
+  font-weight: bold;
+}
+
+.insights-section li:last-child {
+  margin-bottom: 0;
+}
+
+.insights-section .data-sources {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--theme-foreground-faint);
+  font-size: 0.65rem;
+  color: var(--theme-foreground-muted);
+}
+
+form, form * {
+  overflow-anchor: none !important;
+}
+</style>
+<div class="hero">
+  <h1>Global Warming Effects Dashboard</h1>
+  <p>Interactive visualization of interconnected climate change impacts across multiple environmental indicators (1880-2019)</p>
+</div>
+<div class="observablehq observablehq--block"><!--:ed1597f5:--></div>
+<div class="observablehq observablehq--block"><!--:b82d6312:--></div>
+<div class="observablehq observablehq--block"><!--:86ac798e:--></div>
+<div class="observablehq observablehq--block"><!--:b7a6d981:--></div>
+<div class="dashboard-layout">
+  <div class="sidebar">
+    <div class="controls-section">
+      <h3>Timeline</h3>
+<div class="observablehq observablehq--block"><!--:29b1f191:--></div>
+  </div>
+    <div class="stat-card">
+      <div class="stat-label">Temperature Rise</div>
+      <div class="stat-value positive">+<observablehq-loading></observablehq-loading><!--:38959227:-->°C</div>
+      <div class="stat-change">Since <observablehq-loading></observablehq-loading><!--:0a723573:--></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Sea Level Rise</div>
+      <div class="stat-value positive">+<observablehq-loading></observablehq-loading><!--:654a0e10:-->mm</div>
+      <div class="stat-change">Since <observablehq-loading></observablehq-loading><!--:0a723573-1:--></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Glacier Mass Loss</div>
+      <div class="stat-value negative"><observablehq-loading></observablehq-loading><!--:93a8a6ac:-->m</div>
+      <div class="stat-change">Since 1956</div>
+    </div>
+    <div class="insights-section">
+      <h3>Key Insights</h3>
+      <ul>
+        <li><strong>Temperature Rise:</strong> Global temperatures have increased by <strong><observablehq-loading></observablehq-loading><!--:38959227-1:-->°C</strong> since 1880</li>
+        <li><strong>Sea Level Rise:</strong> Oceans have risen by <strong><observablehq-loading></observablehq-loading><!--:654a0e10-1:-->mm</strong> over the same period</li>
+        <li><strong>Glacier Loss:</strong> Reference glaciers have lost <strong><observablehq-loading></observablehq-loading><!--:8b22ab26:--> meters</strong> of water equivalent since 1956</li>
+        <li><strong>Acceleration:</strong> The rate of change is increasing across all indicators</li>
+        <li><strong>Correlation:</strong> Strong positive relationship between temperature rise and both sea level increase and glacier mass loss</li>
+      </ul>
+      <div class="data-sources">
+        <strong>Data Sources:</strong> <a href="https://datahub.io" target="_blank" rel="noopener noreferrer">Datahub.io</a> - <a href="https://datahub.io/core/global-temp" target="_blank" rel="noopener noreferrer">NASA GISTEMP</a>, <a href="https://datahub.io/core/sea-level-rise" target="_blank" rel="noopener noreferrer">CSIRO</a>, <a href="https://datahub.io/core/glacier-mass-balance" target="_blank" rel="noopener noreferrer">WGMS</a>, EPA
+      </div>
+    </div>
+  </div>
+  <div class="main-content">
+<div class="observablehq observablehq--block"><!--:43e3970c:--></div>
+<div class="observablehq observablehq--block"><!--:39852187:--></div>
+<div class="observablehq observablehq--block"><!--:02eea729:--></div>
+<div class="observablehq observablehq--block"><!--:7e2bd45c:--></div>
+<div class="observablehq observablehq--block"><!--:54d4d9ab:--></div>
+<div class="observablehq observablehq--block"><!--:1307af7e:--></div>
+<div class="observablehq observablehq--block"><!--:8c34443b:--></div>
+<div class="observablehq observablehq--block"><!--:cea01cc2:--></div>
+<div class="chart-container chart-large">
+  <h3>Combined Climate Indicators (1880-2019)</h3>
+  <observablehq-loading></observablehq-loading><!--:ba4c6d2d:-->
+</div>
+<div class="chart-grid">
+  <div class="chart-container">
+    <h3>Rate of Change Analysis</h3>
+    <observablehq-loading></observablehq-loading><!--:b0a3ce8c:-->
+  </div>
+  <div class="chart-container">
+    <h3>Glacier vs Temperature</h3>
+    <observablehq-loading></observablehq-loading><!--:f85dea00:-->
+  </div>
+  <div class="chart-container">
+    <h3>Decade Comparison</h3>
+    <observablehq-loading></observablehq-loading><!--:e23a402c:-->
+  </div>
+</div>
+  </div>
+</div>
+</main>
+<footer id="observablehq-footer">
+<nav><a rel="prev" href="./co2-monitoring"><span>Atmospheric CO₂ Monitoring Dashboard</span></a><a rel="next" href="./sea-level-dashboard"><span>Global Sea Level Rise Dashboard</span></a></nav>
+<div>Built with Observable Framework. Sources: NASA GISTEMP, CSIRO, WGMS, Scripps CO₂.</div>
+</footer>
+</div>
+</body>
+</html>

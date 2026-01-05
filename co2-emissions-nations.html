@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="generator" content="Observable Framework v1.13.3">
+<title>Global CO2 Emissions by Nation | PortalJS Data App</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_import/style.7a7f6120.css">
+<link rel="preload" as="style" href="./_observablehq/stdlib/inputs.ea9fd553.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_import/style.7a7f6120.css">
+<link rel="stylesheet" type="text/css" href="./_observablehq/stdlib/inputs.ea9fd553.css">
+<link rel="modulepreload" href="./_observablehq/client.3714645d.js">
+<link rel="modulepreload" href="./_observablehq/runtime.e080113b.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.73a8ec5a.js">
+<link rel="modulepreload" href="./_npm/d3@7.9.0/e780feca.js">
+<link rel="modulepreload" href="./_npm/htl@0.3.1/72f4716c.js">
+<link rel="modulepreload" href="./_observablehq/stdlib/inputs.4ef1d259.js">
+<link rel="modulepreload" href="./_npm/@observablehq/plot@0.6.17/d761ef9b.js">
+<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/9cffc2bd.js">
+<link rel="modulepreload" href="./_npm/isoformat@0.2.1/18cbf477.js">
+<link rel="modulepreload" href="./_npm/d3-array@3.2.4/e93ca09f.js">
+<link rel="modulepreload" href="./_npm/d3-axis@3.0.0/0f2de24d.js">
+<link rel="modulepreload" href="./_npm/d3-brush@3.0.0/65eb105b.js">
+<link rel="modulepreload" href="./_npm/d3-chord@3.0.1/7ef8fb2e.js">
+<link rel="modulepreload" href="./_npm/d3-color@3.1.0/aeb57b94.js">
+<link rel="modulepreload" href="./_npm/d3-contour@4.0.2/1d2aed74.js">
+<link rel="modulepreload" href="./_npm/d3-delaunay@6.0.4/5ced1d52.js">
+<link rel="modulepreload" href="./_npm/d3-dispatch@3.0.1/9ba9c7f3.js">
+<link rel="modulepreload" href="./_npm/d3-drag@3.0.0/4202580c.js">
+<link rel="modulepreload" href="./_npm/d3-ease@3.0.1/cdd7e898.js">
+<link rel="modulepreload" href="./_npm/d3-fetch@3.0.1/b4e2ad9a.js">
+<link rel="modulepreload" href="./_npm/d3-force@3.0.0/5e804d15.js">
+<link rel="modulepreload" href="./_npm/d3-format@3.1.0/86074ef6.js">
+<link rel="modulepreload" href="./_npm/d3-geo@3.1.1/40599fb3.js">
+<link rel="modulepreload" href="./_npm/d3-hierarchy@3.1.2/e49e792c.js">
+<link rel="modulepreload" href="./_npm/d3-interpolate@3.0.1/8d1e5425.js">
+<link rel="modulepreload" href="./_npm/d3-path@3.1.0/20d3f133.js">
+<link rel="modulepreload" href="./_npm/d3-polygon@3.0.1/7553081f.js">
+<link rel="modulepreload" href="./_npm/d3-quadtree@3.0.1/0dfd751c.js">
+<link rel="modulepreload" href="./_npm/d3-random@3.0.1/3c90ee06.js">
+<link rel="modulepreload" href="./_npm/d3-scale@4.0.2/843b6a76.js">
+<link rel="modulepreload" href="./_npm/d3-scale-chromatic@3.1.0/ba24c2e7.js">
+<link rel="modulepreload" href="./_npm/d3-selection@3.0.0/4d94e5b7.js">
+<link rel="modulepreload" href="./_npm/d3-shape@3.2.0/6d3a6726.js">
+<link rel="modulepreload" href="./_npm/d3-time@3.1.0/9f03c579.js">
+<link rel="modulepreload" href="./_npm/d3-time-format@4.1.0/07c9626f.js">
+<link rel="modulepreload" href="./_npm/d3-timer@3.0.1/b58a267d.js">
+<link rel="modulepreload" href="./_npm/d3-transition@3.0.1/004da2ac.js">
+<link rel="modulepreload" href="./_npm/d3-zoom@3.0.0/b5786b3f.js">
+<link rel="modulepreload" href="./_npm/interval-tree-1d@1.0.4/53fe8176.js">
+<link rel="modulepreload" href="./_npm/internmap@2.0.3/e08981d9.js">
+<link rel="modulepreload" href="./_npm/delaunator@5.0.1/02d43215.js">
+<link rel="modulepreload" href="./_npm/binary-search-bounds@2.0.5/cbf6ba23.js">
+<link rel="modulepreload" href="./_npm/robust-predicates@3.0.2/aa00730b.js">
+
+  <link rel="icon" href="./_file/observable.1af93621.png" type="image/png" sizes="32x32">
+  <script>
+    sessionStorage.setItem("observablehq-sidebar", "false");
+  </script>
+  <script type="module">
+    import { inject } from 'https://esm.sh/@vercel/analytics@1.5.0';
+    inject();
+  </script>
+  
+<script type="module">
+
+import {define} from "./_observablehq/client.3714645d.js";
+import {registerFile} from "./_observablehq/stdlib.73a8ec5a.js";
+
+registerFile("./data/fossil-fuel-co2-emissions-by-nation.csv", {"name":"./data/fossil-fuel-co2-emissions-by-nation.csv","mimeType":"text/csv","path":"./_file/data/fossil-fuel-co2-emissions-by-nation.887d88d8.csv","lastModified":1761137970009,"size":1116640});
+
+define({id: "d94587f0", inputs: ["FileAttachment","d3"], outputs: ["emissionsRaw","emissionsData","latestYear","latestYearData","globalTotal","topEmitters","topPerCapita"], body: async (FileAttachment,d3) => {
+// Load emissions data
+const emissionsRaw = FileAttachment("./data/fossil-fuel-co2-emissions-by-nation.csv").csv({typed: true});
+const emissionsData = (await emissionsRaw).map(d => ({
+  year: +d.Year,
+  country: d.Country,
+  total: +d.Total || 0,
+  solidFuel: +d["Solid Fuel"] || 0,
+  liquidFuel: +d["Liquid Fuel"] || 0,
+  gasFuel: +d["Gas Fuel"] || 0,
+  cement: +d.Cement || 0,
+  gasFlaring: +d["Gas Flaring"] || 0,
+  perCapita: +d["Per Capita"] || 0
+})).filter(d => d.total > 0);
+
+// Get latest year data
+const latestYear = d3.max(emissionsData, d => d.year);
+const latestYearData = emissionsData.filter(d => d.year === latestYear);
+
+// Calculate global total
+const globalTotal = d3.sum(latestYearData, d => d.total);
+
+// Get top emitters
+const topEmitters = latestYearData
+  .sort((a, b) => b.total - a.total)
+  .slice(0, 20);
+
+// Get top per capita
+const topPerCapita = latestYearData
+  .filter(d => d.perCapita > 0)
+  .sort((a, b) => b.perCapita - a.perCapita)
+  .slice(0, 10);
+return {emissionsRaw,emissionsData,latestYear,latestYearData,globalTotal,topEmitters,topPerCapita};
+}});
+
+define({id: "951a7949", inputs: ["html","Inputs"], outputs: ["Scrubber"], body: (html,Inputs) => {
+function Scrubber(values, {format = value => value, initial = 0, direction = 1, delay = null, autoplay = true, loop = true, loopDelay = null, alternate = false} = {}) {
+  values = Array.from(values);
+  const form = html`<form style="font: 9px var(--sans-serif); display: flex; flex-direction: column; gap: 0.35rem;"><button name=b type=button style="width: 100%; padding: 0.25rem; font-size: 9px;"></button><label style="display: flex; flex-direction: column; gap: 0.2rem;"><input name=i type=range min=0 max=${values.length - 1} value=${initial} step=1 style="width: 100%;"><output name=o style="font-size: 10px; font-weight: 600; text-align: center;"></output></label></form>`;
+  let frame = null, timer = null, interval = null;
+  const start = () => { form.b.textContent = "Pause"; if (delay === null) frame = requestAnimationFrame(tick); else interval = setInterval(tick, delay); };
+  const stop = () => { form.b.textContent = "Play"; if (frame !== null) cancelAnimationFrame(frame), frame = null; if (timer !== null) clearTimeout(timer), timer = null; if (interval !== null) clearInterval(interval), interval = null; };
+  const running = () => frame !== null || timer !== null || interval !== null;
+  const step = () => { form.i.valueAsNumber = (form.i.valueAsNumber + direction + values.length) % values.length; form.i.dispatchEvent(new CustomEvent("input", {bubbles: true})); };
+  const tick = () => { if (form.i.valueAsNumber === (direction > 0 ? values.length - 1 : direction < 0 ? 0 : NaN)) { if (!loop) return stop(); if (alternate) direction = -direction; if (loopDelay !== null) { if (frame !== null) cancelAnimationFrame(frame), frame = null; if (interval !== null) clearInterval(interval), interval = null; timer = setTimeout(() => (step(), start()), loopDelay); return; } } if (delay === null) frame = requestAnimationFrame(tick); step(); };
+  form.i.oninput = event => { if (event && event.isTrusted && running()) stop(); form.value = values[form.i.valueAsNumber]; form.o.value = format(form.value, form.i.valueAsNumber, values); };
+  form.b.onclick = () => { if (running()) return stop(); direction = alternate && form.i.valueAsNumber === values.length - 1 ? -1 : 1; form.i.valueAsNumber = (form.i.valueAsNumber + direction) % values.length; form.i.dispatchEvent(new CustomEvent("input", {bubbles: true})); start(); };
+  form.i.oninput();
+  if (autoplay) start(); else stop();
+  Inputs.disposal(form).then(stop);
+  return form;
+}
+return {Scrubber};
+}});
+
+define({id: "5d1534aa", inputs: ["d3","latestYear","view","Scrubber"], outputs: ["dashboardYears","selectedDashboardYear"], body: (d3,latestYear,view,Scrubber) => {
+const dashboardYears = d3.range(1751, latestYear + 1);
+const selectedDashboardYear = view(Scrubber(dashboardYears, {
+  delay: 100,
+  loop: false,
+  initial: dashboardYears.length - 1,
+  autoplay: false,
+  format: d => String(d)
+}));
+return {dashboardYears,selectedDashboardYear};
+}});
+
+define({id: "6e408d49", inputs: ["d3","emissionsData","selectedDashboardYear"], outputs: ["cumulativeData","yearData","yearGlobalTotal","yearTopEmitter","yearCountriesCount","yearTop5Total","yearTop5Percentage","yearAvgPerCountry"], body: (d3,emissionsData,selectedDashboardYear) => {
+const cumulativeData = d3.rollups(
+  emissionsData.filter(d => d.year <= selectedDashboardYear),
+  v => d3.sum(v, d => d.total),
+  d => d.country
+)
+  .map(([country, cumulative]) => ({
+    country,
+    total: cumulative
+  }))
+  .sort((a, b) => b.total - a.total);
+
+const yearData = cumulativeData.slice(0, 20);
+
+const yearGlobalTotal = d3.sum(cumulativeData, d => d.total);
+const yearTopEmitter = cumulativeData[0];
+const yearCountriesCount = cumulativeData.length;
+const yearTop5Total = d3.sum(cumulativeData.slice(0, 5), d => d.total);
+const yearTop5Percentage = ((yearTop5Total / yearGlobalTotal) * 100).toFixed(0);
+const yearAvgPerCountry = (yearGlobalTotal / yearCountriesCount).toFixed(1);
+return {cumulativeData,yearData,yearGlobalTotal,yearTopEmitter,yearCountriesCount,yearTop5Total,yearTop5Percentage,yearAvgPerCountry};
+}});
+
+define({id: "832e62d7", mode: "inline", inputs: ["yearGlobalTotal","display"], body: async (yearGlobalTotal,display) => {
+display(await(
+(yearGlobalTotal / 1000).toFixed(1)
+))
+}});
+
+define({id: "73717c36", mode: "inline", inputs: ["selectedDashboardYear","display"], body: async (selectedDashboardYear,display) => {
+display(await(
+selectedDashboardYear
+))
+}});
+
+define({id: "da3efa59", mode: "inline", inputs: ["yearTopEmitter","display"], body: async (yearTopEmitter,display) => {
+display(await(
+yearTopEmitter?.country || 'N/A'
+))
+}});
+
+define({id: "4b94bd8c", mode: "inline", inputs: ["yearTopEmitter","display"], body: async (yearTopEmitter,display) => {
+display(await(
+yearTopEmitter ? (yearTopEmitter.total / 1000).toFixed(1) + 'B MT cumulative' : 'N/A'
+))
+}});
+
+define({id: "a7701b96", mode: "inline", inputs: ["yearCountriesCount","display"], body: async (yearCountriesCount,display) => {
+display(await(
+yearCountriesCount
+))
+}});
+
+define({id: "73717c36-1", mode: "inline", inputs: ["selectedDashboardYear","display"], body: async (selectedDashboardYear,display) => {
+display(await(
+selectedDashboardYear
+))
+}});
+
+define({id: "e2728925", mode: "inline", inputs: ["yearTop5Percentage","display"], body: async (yearTop5Percentage,display) => {
+display(await(
+yearTop5Percentage
+))
+}});
+
+define({id: "c57840ea", mode: "inline", inputs: ["yearAvgPerCountry","display"], body: async (yearAvgPerCountry,display) => {
+display(await(
+yearAvgPerCountry
+))
+}});
+
+define({id: "0bbbc3f6", inputs: ["d3","emissionsData","selectedDashboardYear","Plot"], outputs: ["shortenCountryName","emissionsBreakdown"], body: (d3,emissionsData,selectedDashboardYear,Plot) => {
+function shortenCountryName(name) {
+  const abbreviations = {
+    "UNITED STATES OF AMERICA": "USA",
+    "UNITED KINGDOM": "UK",
+    "RUSSIAN FEDERATION": "Russia",
+    "SOVIET UNION": "USSR",
+    "CHINA (MAINLAND)": "China",
+    "FRANCE (INCLUDING MONACO)": "France",
+    "GERMANY": "Germany",
+    "UNITED ARAB EMIRATES": "UAE",
+    "KOREA, REPUBLIC OF": "South Korea",
+    "KOREA, DEMOCRATIC PEOPLE'S REPUBLIC OF": "North Korea",
+    "IRAN (ISLAMIC REPUBLIC OF)": "Iran",
+    "SAUDI ARABIA": "Saudi Arabia",
+    "VENEZUELA (BOLIVARIAN REPUBLIC OF)": "Venezuela",
+    "UNITED REPUBLIC OF TANZANIA": "Tanzania",
+    "BOLIVIA (PLURINATIONAL STATE OF)": "Bolivia",
+    "VIET NAM": "Vietnam"
+  };
+  return abbreviations[name] || name;
+}
+
+function emissionsBreakdown({width} = {}) {
+  const isMobile = width < 640;
+
+  const cumulativeByCountry = d3.rollups(
+    emissionsData.filter(d => d.year <= selectedDashboardYear),
+    v => ({
+      solidFuel: d3.sum(v, d => d.solidFuel),
+      liquidFuel: d3.sum(v, d => d.liquidFuel),
+      gasFuel: d3.sum(v, d => d.gasFuel),
+      cement: d3.sum(v, d => d.cement),
+      gasFlaring: d3.sum(v, d => d.gasFlaring),
+      total: d3.sum(v, d => d.total)
+    }),
+    d => d.country
+  )
+    .map(([country, sources]) => ({
+      country,
+      ...sources
+    }))
+    .sort((a, b) => b.total - a.total)
+    .slice(0, 12);
+
+  const breakdownData = cumulativeByCountry.flatMap(d => [
+    { country: shortenCountryName(d.country), fullName: d.country, type: "Solid Fuel", value: d.solidFuel },
+    { country: shortenCountryName(d.country), fullName: d.country, type: "Liquid Fuel", value: d.liquidFuel },
+    { country: shortenCountryName(d.country), fullName: d.country, type: "Gas Fuel", value: d.gasFuel },
+    { country: shortenCountryName(d.country), fullName: d.country, type: "Cement", value: d.cement },
+    { country: shortenCountryName(d.country), fullName: d.country, type: "Gas Flaring", value: d.gasFlaring }
+  ]);
+
+  return Plot.plot({
+    width,
+    height: isMobile ? 280 : 320,
+    marginLeft: isMobile ? 80 : 95,
+    marginBottom: isMobile ? 50 : 40,
+    marginTop: 10,
+    marginRight: isMobile ? 20 : 30,
+    style: {
+      fontSize: isMobile ? "10px" : "11px"
+    },
+    x: {
+      label: null,
+      grid: true
+    },
+    y: {
+      label: null
+    },
+    color: {
+      legend: true,
+      domain: ["Solid Fuel", "Liquid Fuel", "Gas Fuel", "Cement", "Gas Flaring"],
+      range: ["#64748b", "#f59e0b", "#ef4444", "#8b5cf6", "#ec4899"],
+      label: null
+    },
+    marks: [
+      Plot.barX(breakdownData, {
+        x: "value",
+        y: "country",
+        fill: "type",
+        tip: true,
+        title: d => `${d.fullName} - ${d.type}\nCumulative (1751-${selectedDashboardYear}): ${d.value.toLocaleString()} MT`,
+        sort: { y: "x", reverse: true }
+      }),
+      Plot.ruleX([0])
+    ]
+  });
+}
+return {shortenCountryName,emissionsBreakdown};
+}});
+
+define({id: "76f4b740", inputs: ["d3","emissionsData","selectedDashboardYear"], outputs: ["emissionsTreemap"], body: (d3,emissionsData,selectedDashboardYear) => {
+function emissionsTreemap({width} = {}) {
+  const isMobile = width < 640;
+  const height = isMobile ? 280 : 320;
+
+  const cumulativeToYear = d3.rollups(
+    emissionsData.filter(d => d.year <= selectedDashboardYear),
+    v => d3.sum(v, d => d.total),
+    d => d.country
+  )
+    .map(([country, cumulative]) => ({
+      country,
+      cumulative
+    }))
+    .sort((a, b) => b.cumulative - a.cumulative)
+    .slice(0, 30);
+
+  const hierarchyData = {
+    name: "Global",
+    children: cumulativeToYear.map(d => ({
+      name: d.country,
+      value: d.cumulative
+    }))
+  };
+
+  const root = d3.hierarchy(hierarchyData)
+    .sum(d => d.value)
+    .sort((a, b) => b.value - a.value);
+
+  d3.treemap()
+    .size([width, height])
+    .paddingInner(3)
+    .paddingOuter(6)
+    .round(true)(root);
+
+  const colorScale = d3.scaleSequential(d3.interpolateRdYlGn)
+    .domain([d3.max(cumulativeToYear, d => d.cumulative), 0]);
+
+  const container = d3.create("div")
+    .style("position", "relative");
+
+  const svg = container.append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("viewBox", [0, 0, width, height])
+    .style("background", "#ffffff")
+    .style("font", "13px sans-serif")
+    .style("display", "block");
+
+  const tooltip = container.append("div")
+    .style("position", "absolute")
+    .style("visibility", "hidden")
+    .style("background", "white")
+    .style("border", "1px solid #ccc")
+    .style("border-radius", "4px")
+    .style("padding", "8px")
+    .style("font-size", "12px")
+    .style("font-family", "system-ui, sans-serif")
+    .style("pointer-events", "none")
+    .style("box-shadow", "0 2px 4px rgba(0,0,0,0.1)")
+    .style("z-index", "1000")
+    .style("line-height", "1.5");
+
+  const leaf = svg.selectAll("g")
+    .data(root.leaves())
+    .join("g")
+      .attr("transform", d => `translate(${d.x0},${d.y0})`);
+
+  leaf.append("rect")
+    .attr("fill", d => colorScale(d.data.value))
+    .attr("fill-opacity", 0.85)
+    .attr("width", d => d.x1 - d.x0)
+    .attr("height", d => d.y1 - d.y0)
+    .attr("stroke", "#e5e7eb")
+    .attr("stroke-width", 3)
+    .attr("rx", 4)
+    .style("cursor", "pointer")
+    .on("mouseenter", function(event, d) {
+      d3.select(this)
+        .attr("fill-opacity", 1)
+        .attr("stroke", "#fbbf24")
+        .attr("stroke-width", 4);
+
+      tooltip
+        .html(`<strong>${d.data.name}</strong><br/>Cumulative (1751-${selectedDashboardYear}):<br/>${d.data.value.toLocaleString()} MT`)
+        .style("visibility", "visible");
+    })
+    .on("mousemove", function(event) {
+      const [mx, my] = d3.pointer(event, container.node());
+      const tooltipNode = tooltip.node();
+      const tooltipWidth = tooltipNode.offsetWidth;
+      const tooltipHeight = tooltipNode.offsetHeight;
+
+      let left = mx + 15;
+      let top = my - tooltipHeight / 2;
+
+      if (left + tooltipWidth > width) {
+        left = mx - tooltipWidth - 15;
+      }
+      if (top < 0) top = 0;
+      if (top + tooltipHeight > height) top = height - tooltipHeight;
+
+      tooltip
+        .style("left", `${left}px`)
+        .style("top", `${top}px`);
+    })
+    .on("mouseleave", function() {
+      d3.select(this)
+        .attr("fill-opacity", 0.85)
+        .attr("stroke", "#e5e7eb")
+        .attr("stroke-width", 3);
+
+      tooltip.style("visibility", "hidden");
+    });
+
+  leaf.append("clipPath")
+    .attr("id", (d, i) => `clip-${i}`)
+    .append("rect")
+    .attr("width", d => d.x1 - d.x0)
+    .attr("height", d => d.y1 - d.y0);
+
+  // Country name
+  leaf.append("text")
+    .attr("clip-path", (d, i) => `url(#clip-${i})`)
+    .attr("x", 5)
+    .attr("y", isMobile ? 14 : 16)
+    .attr("fill", "white")
+    .attr("font-weight", "bold")
+    .attr("font-size", d => {
+      const width = d.x1 - d.x0;
+      const height = d.y1 - d.y0;
+      if (width < 30 || height < 20) return 0;
+      return Math.min(width / 8, height / 4, isMobile ? 12 : 14);
+    })
+    .style("text-shadow", "0 1px 3px rgba(0,0,0,0.4), 0 0 2px rgba(0,0,0,0.3)")
+    .text(d => {
+      const width = d.x1 - d.x0;
+      if (width < 30) return "";
+      const name = d.data.name;
+      const maxChars = Math.floor(width / 6);
+      if (name.length > maxChars) {
+        return name.substring(0, maxChars - 1) + ".";
+      }
+      return name;
+    })
+    .style("pointer-events", "none");
+
+  leaf.append("text")
+    .attr("clip-path", (d, i) => `url(#clip-${i})`)
+    .attr("x", 5)
+    .attr("y", d => {
+      const height = d.y1 - d.y0;
+      const width = d.x1 - d.x0;
+      if (width < 30 || height < 20) return 0;
+      return height < 40 ? 26 : (isMobile ? 28 : 32);
+    })
+    .attr("fill", "white")
+    .attr("font-size", d => {
+      const width = d.x1 - d.x0;
+      const height = d.y1 - d.y0;
+      if (width < 30 || height < 20) return 0;
+      return Math.min(width / 10, height / 5, isMobile ? 11 : 12);
+    })
+    .attr("font-weight", "600")
+    .style("text-shadow", "0 1px 3px rgba(0,0,0,0.4), 0 0 2px rgba(0,0,0,0.3)")
+    .text(d => {
+      const width = d.x1 - d.x0;
+      const height = d.y1 - d.y0;
+      if (width < 30 || height < 20) return "";
+      const val = d.data.value;
+      if (val >= 1000) return `${(val / 1000).toFixed(1)}K`;
+      return `${val.toFixed(0)}`;
+    })
+    .style("pointer-events", "none");
+
+  return container.node();
+}
+return {emissionsTreemap};
+}});
+
+define({id: "322c1729", inputs: ["topEmitters","emissionsData","Plot","latestYear"], outputs: ["top5Countries","historicalData","historicalTrends"], body: (topEmitters,emissionsData,Plot,latestYear) => {
+const top5Countries = topEmitters.slice(0, 5).map(d => d.country);
+
+const historicalData = emissionsData.filter(d =>
+  top5Countries.includes(d.country) &&
+  d.year >= 1850
+);
+
+function historicalTrends({width} = {}) {
+  const isMobile = width < 640;
+  return Plot.plot({
+    width,
+    height: isMobile ? 280 : 320,
+    marginLeft: isMobile ? 45 : 55,
+    marginRight: isMobile ? 10 : 15,
+    marginTop: 10,
+    marginBottom: isMobile ? 50 : 45,
+    style: {
+      fontSize: isMobile ? "10px" : "11px"
+    },
+    x: {
+      label: null,
+      grid: true,
+      tickFormat: d => String(d),
+      ticks: isMobile ? 5 : 8
+    },
+    y: {
+      label: null,
+      grid: true,
+      type: "log",
+      ticks: isMobile ? [1, 100, 10000] : [1, 10, 100, 1000, 10000]
+    },
+    color: {
+      legend: true,
+      domain: top5Countries,
+      range: ["#ef4444", "#f59e0b", "#22c55e", "#3b82f6", "#8b5cf6"],
+      label: null
+    },
+    marks: [
+      Plot.line(historicalData, {
+        x: "year",
+        y: "total",
+        stroke: "country",
+        strokeWidth: 2,
+        curve: "catmull-rom",
+        tip: true,
+        title: d => `${d.country} (${d.year})\n${d.total.toLocaleString()} MT`
+      }),
+      Plot.dot(
+        historicalData.filter(d => d.year === latestYear),
+        {
+          x: "year",
+          y: "total",
+          fill: "country",
+          r: 4,
+          stroke: "white",
+          strokeWidth: 1.5
+        }
+      )
+    ]
+  });
+}
+return {top5Countries,historicalData,historicalTrends};
+}});
+
+define({id: "73717c36-2", mode: "inline", inputs: ["selectedDashboardYear","display"], body: async (selectedDashboardYear,display) => {
+display(await(
+selectedDashboardYear
+))
+}});
+
+define({id: "876f6312", mode: "inline", inputs: ["resize","emissionsBreakdown","display"], body: async (resize,emissionsBreakdown,display) => {
+display(await(
+resize((width) => emissionsBreakdown({width}))
+))
+}});
+
+define({id: "f1d977d2", mode: "inline", inputs: ["resize","historicalTrends","display"], body: async (resize,historicalTrends,display) => {
+display(await(
+resize((width) => historicalTrends({width}))
+))
+}});
+
+define({id: "73717c36-3", mode: "inline", inputs: ["selectedDashboardYear","display"], body: async (selectedDashboardYear,display) => {
+display(await(
+selectedDashboardYear
+))
+}});
+
+define({id: "608caa4c", mode: "inline", inputs: ["resize","emissionsTreemap","display"], body: async (resize,emissionsTreemap,display) => {
+display(await(
+resize((width) => emissionsTreemap({width}))
+))
+}});
+
+</script>
+</head>
+<body>
+<div id="observablehq-center">
+<main id="observablehq-main" class="observablehq">
+<div class="portaljs-banner">
+  <div class="portaljs-banner-content">
+    <span class="portaljs-banner-icon">🌀</span>
+    <div class="portaljs-banner-text">
+      <p class="portaljs-banner-title">Create beautiful data portals with PortalJS</p>
+      <p class="portaljs-banner-description"> The open-source framework for building data catalogs, dashboards, and visualizations.</p>
+    </div>
+  </div>
+  <a href="https://www.portaljs.com/" target="_blank" rel="noopener noreferrer" class="portaljs-banner-cta">
+    Get Started Free <span class="portaljs-banner-cta-arrow">→</span>
+  </a>
+</div>
+<style>
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0.5rem 0.75rem;
+  background: var(--theme-background-alt);
+  color: var(--theme-foreground);
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+  border: 2px solid var(--theme-foreground-faint);
+  overflow-anchor: none !important;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--theme-foreground-alt);
+  max-width: 100%;
+  line-height: 1.2;
+}
+
+.hero p {
+  margin: 0.15rem 0 0;
+  font-size: 0.7rem;
+  color: var(--theme-foreground-muted);
+  max-width: 100%;
+  line-height: 1.3;
+}
+
+* {
+  overflow-anchor: none !important;
+}
+
+body {
+  overflow-anchor: none !important;
+}
+
+.card, .card > *, .card svg, .card figure {
+  overflow-anchor: none !important;
+  contain: layout style paint;
+}
+
+.card, .grid {
+  max-width: 100% !important;
+}
+
+.chart-container {
+  overflow-anchor: none !important;
+  contain: layout style paint;
+  min-height: 340px;
+}
+
+.chart-grid {
+  overflow-anchor: none !important;
+}
+
+svg, svg * {
+  overflow-anchor: none !important;
+}
+
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 1rem;
+  margin: 0 0 4rem 0;
+  overflow-anchor: none !important;
+  min-height: 0;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-right: 0.5rem;
+  border-right: 1px solid var(--theme-foreground-faint);
+}
+
+.stat-card {
+  background: var(--theme-background-alt);
+  border: 2px solid var(--theme-foreground-faint);
+  border-radius: 4px;
+  padding: 0.5rem;
+  text-align: left;
+  overflow-anchor: none !important;
+  min-height: 60px;
+}
+
+.stat-value {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--theme-foreground-alt);
+  margin: 0.1rem 0;
+  line-height: 1.1;
+}
+
+.stat-label {
+  font-size: 0.6rem;
+  color: var(--theme-foreground-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.stat-change {
+  font-size: 0.6rem;
+  font-weight: 500;
+  margin-top: 0.1rem;
+  color: var(--theme-foreground-muted);
+  line-height: 1.2;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-height: 400px;
+  background: white;
+  border: 1px solid var(--theme-foreground-faint);
+  border-radius: 6px;
+  overflow: visible;
+}
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto auto;
+  gap: 0;
+  overflow-anchor: none !important;
+  contain: layout;
+}
+
+.chart-grid .chart-container {
+  border: none;
+  border-radius: 0;
+  position: relative;
+}
+
+.chart-grid .chart-container:nth-child(1) {
+  grid-column: 1 / 3;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.chart-grid .chart-container:nth-child(2)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #e5e7eb;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-right: none;
+    border-bottom: 1px solid var(--theme-foreground-faint);
+    padding-right: 0;
+    padding-bottom: 0.75rem;
+  }
+
+  .controls-section {
+    width: 100%;
+  }
+
+  .stat-card {
+    flex: 1;
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  body, html {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  #observablehq-main {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .chart-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .chart-grid .chart-container:nth-child(1) {
+    grid-column: auto;
+  }
+
+  .chart-grid .chart-container:nth-child(2)::after {
+    width: 100%;
+    height: 1px;
+    right: auto;
+    left: 0;
+    top: auto;
+    bottom: 0;
+  }
+
+  .chart-container {
+    min-height: 280px;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+
+  .chart-container svg,
+  .chart-container figure,
+  .chart-container > div {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .sidebar {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .stat-card {
+    min-width: auto;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .controls-section {
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .controls-section form {
+    max-width: 100%;
+  }
+
+  .controls-section form button {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .controls-section form input[type="range"] {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .dashboard-layout {
+    max-height: none;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .main-content {
+    max-height: none;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+}
+
+.chart-container {
+  background: white;
+  border: none;
+  border-radius: 0;
+  padding: 0.6rem;
+}
+
+.chart-container h3 {
+  margin: 0 0 0.4rem 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--theme-foreground);
+  overflow-anchor: none !important;
+}
+
+.chart-container > * {
+  overflow-anchor: none !important;
+}
+
+.controls-section {
+  background: var(--theme-background-alt);
+  border: 2px solid var(--theme-foreground-faint);
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
+.controls-section h3 {
+  margin: 0 0 0.35rem 0;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--theme-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.insights-section {
+  background: var(--theme-background-alt);
+  border: 2px solid var(--theme-foreground-faint);
+  border-radius: 4px;
+  padding: 0.6rem;
+  font-size: 0.7rem;
+  line-height: 1.35;
+}
+
+.insights-section h3 {
+  margin: 0 0 0.4rem 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--theme-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.insights-section ul {
+  margin: 0;
+  padding-left: 1rem;
+  list-style-type: none;
+}
+
+.insights-section li {
+  margin-bottom: 0.35rem;
+  position: relative;
+  padding-left: 0.4rem;
+  font-size: 0.68rem;
+  line-height: 1.4;
+}
+
+.insights-section li::before {
+  content: "•";
+  position: absolute;
+  left: -0.4rem;
+  color: var(--theme-foreground-focus);
+  font-weight: bold;
+  font-size: 0.7rem;
+}
+
+.insights-section li:last-child {
+  margin-bottom: 0;
+}
+
+.insights-section .data-sources {
+  margin-top: 0.55rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--theme-foreground-faint);
+  font-size: 0.62rem;
+  color: var(--theme-foreground-muted);
+  line-height: 1.35;
+}
+
+form, form * {
+  overflow-anchor: none !important;
+}
+</style>
+<div class="hero">
+  <h1>Global CO₂ Emissions by Nation</h1>
+  <p>Fossil Fuel &amp; Cement Emissions by Nation (1751-2020)</p>
+</div>
+<div class="observablehq observablehq--block"><!--:d94587f0:--></div>
+<div class="observablehq observablehq--block"><!--:951a7949:--></div>
+<div class="dashboard-layout">
+  <div class="sidebar">
+    <div class="controls-section">
+      <h3>Timeline</h3>
+<div class="observablehq observablehq--block"><!--:5d1534aa:--></div>
+  </div>
+<div class="observablehq observablehq--block"><!--:6e408d49:--></div>
+  <div class="stat-card">
+    <div class="stat-label">Cumulative Total</div>
+    <div class="stat-value"><observablehq-loading></observablehq-loading><!--:832e62d7:-->B</div>
+    <div class="stat-change">MT (1751-<observablehq-loading></observablehq-loading><!--:73717c36:-->)</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Top Emitter</div>
+    <div class="stat-value"><observablehq-loading></observablehq-loading><!--:da3efa59:--></div>
+    <div class="stat-change"><observablehq-loading></observablehq-loading><!--:4b94bd8c:--></div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Countries</div>
+    <div class="stat-value"><observablehq-loading></observablehq-loading><!--:a7701b96:--></div>
+    <div class="stat-change">Reported by <observablehq-loading></observablehq-loading><!--:73717c36-1:--></div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Top 5 Share</div>
+    <div class="stat-value"><observablehq-loading></observablehq-loading><!--:e2728925:-->%</div>
+    <div class="stat-change">Of cumulative total</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Average/Country</div>
+    <div class="stat-value"><observablehq-loading></observablehq-loading><!--:c57840ea:--></div>
+    <div class="stat-change">Million tons cumulative</div>
+  </div>
+  <div class="insights-section">
+    <h3>Key Insights</h3>
+    <ul>
+      <li><strong>Dataset:</strong> 270 years of global CO₂ emissions data (1751-2020)</li>
+      <li><strong>Coverage:</strong> Tracks emissions from fossil fuels, cement production, and gas flaring</li>
+      <li><strong>Cumulative View:</strong> All visualizations show cumulative emissions from 1751 to selected year</li>
+      <li><strong>Historical Shift:</strong> UK led early industrialization, USA dominated 1900s cumulative totals</li>
+      <li><strong>Interactive:</strong> Use timeline to explore how cumulative emissions grew over time</li>
+      <li><strong>Concentration:</strong> Top 5 countries account for majority of all historical emissions</li>
+    </ul>
+    <div class="data-sources">
+      <strong>Data:</strong> <a href="https://datahub.io/core/co2-fossil-by-nation" target="_blank" rel="noopener noreferrer">CDIAC, 1751-2020</a>
+    </div>
+  </div>
+  </div>
+  <div class="main-content">
+<div class="observablehq observablehq--block"><!--:0bbbc3f6:--></div>
+<div class="observablehq observablehq--block"><!--:76f4b740:--></div>
+<div class="observablehq observablehq--block"><!--:322c1729:--></div>
+<div class="chart-grid">
+  <div class="chart-container">
+    <h3>Cumulative Emissions by Source (1751-<observablehq-loading></observablehq-loading><!--:73717c36-2:-->)</h3>
+    <observablehq-loading></observablehq-loading><!--:876f6312:-->
+  </div>
+  <div class="chart-container">
+    <h3>Historical Trends: Top 5 Emitters</h3>
+    <observablehq-loading></observablehq-loading><!--:f1d977d2:-->
+  </div>
+  <div class="chart-container">
+    <h3>Cumulative Emissions (1751-<observablehq-loading></observablehq-loading><!--:73717c36-3:-->)</h3>
+    <observablehq-loading></observablehq-loading><!--:608caa4c:-->
+  </div>
+</div>
+  </div>
+</div>
+</main>
+<footer id="observablehq-footer">
+<nav><a rel="prev" href="./"><span>PortalJS Data App</span></a><a rel="next" href="./co2-monitoring"><span>Atmospheric CO₂ Monitoring Dashboard</span></a></nav>
+<div>Built with Observable Framework. Sources: NASA GISTEMP, CSIRO, WGMS, Scripps CO₂.</div>
+</footer>
+</div>
+</body>
+</html>
