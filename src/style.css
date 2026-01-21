@@ -30,6 +30,13 @@
   margin: 0;
 }
 
+.portaljs-banner-description {
+  color: #FFFFFF;
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.4;
+}
+
 .portaljs-banner-cta {
   display: inline-flex;
   align-items: center;
